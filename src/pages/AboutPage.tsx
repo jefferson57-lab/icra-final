@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Container, Card, CardContent, Badge, Button } from '@blinkdotnew/ui'
-import { Globe, Heart, Shield, Zap, Target, Eye, ArrowRight, Quote } from 'lucide-react'
+import { Globe, Heart, Zap, Target, Eye, ArrowRight, Quote } from 'lucide-react'
 import { Link } from '@tanstack/react-router'
 
 const fadeUp = {
@@ -17,28 +17,22 @@ const stagger = {
 
 const coreValues = [
   {
-    title: 'Scientific Rigor',
-    description: 'Every restoration effort is grounded in peer-reviewed research and data-driven insights.',
-    icon: <Shield className="w-6 h-6 text-primary" />,
-    bg: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=50&w=400',
-  },
-  {
-    title: 'Community Empowerment',
-    description: 'Local communities are not passive beneficiaries — they are the architects of restoration.',
+    title: 'Respect',
+    description: 'Valuing indigenous knowledge and lived experience of local communities as equal to scientific expertise.',
     icon: <Heart className="w-6 h-6 text-primary" />,
     bg: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=50&w=400',
   },
   {
-    title: 'Innovation',
-    description: 'We constantly adapt and scale emerging technologies for environmental healing.',
-    icon: <Zap className="w-6 h-6 text-primary" />,
-    bg: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&q=50&w=400',
-  },
-  {
-    title: 'Integrity',
-    description: 'Full transparency in our processes and accountability for every hectare restored.',
+    title: 'Understanding',
+    description: 'Co-creating solutions grounded in local realities, cultures, and environmental contexts.',
     icon: <Globe className="w-6 h-6 text-primary" />,
     bg: 'https://images.unsplash.com/photo-1542601906990-b4d3fb773b09?auto=format&fit=crop&q=50&w=400',
+  },
+  {
+    title: 'Cooperation',
+    description: 'Building multi-level partnerships—with communities, governments, and institutions—for scale and collective impact.',
+    icon: <Zap className="w-6 h-6 text-primary" />,
+    bg: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&q=50&w=400',
   },
 ]
 
@@ -50,7 +44,7 @@ export default function AboutPage() {
       <section className="relative py-28 md:py-40 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="images/nature.jpg"
+            src="images/about1.jpg"
             alt="African landscape"
             className="w-full h-full object-cover"
           />
@@ -110,16 +104,16 @@ export default function AboutPage() {
                   className="w-full h-full object-cover opacity-15 group-hover:opacity-25 transition-opacity duration-500"
                 />
               </div>
-              <div className="relative z-10 p-10 bg-primary/5 border border-primary/15 rounded-3xl h-full">
-                <div className="p-3.5 bg-primary/15 rounded-2xl w-fit mb-7">
+              <div className="relative z-10 p-10 bg-primary/15 border border-primary/20 rounded-3xl h-full backdrop-blur-sm">
+                <div className="p-3.5 bg-primary/20 rounded-2xl w-fit mb-7">
                   <Target className="w-9 h-9 text-primary" />
                 </div>
-                <h2 className="text-2xl font-bold mb-4 font-serif">Our Mission</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  To build the capacity of marginalized communities — especially women and
-                  youth — to lead inclusive citizen science and training initiatives that
-                  advance water security, food security, climate, health, and gender justice
-                  in Africa.
+                <h2 className="text-2xl font-bold mb-4 font-serif text-foreground">Our Mission</h2>
+                <p className="text-foreground leading-relaxed">
+                  To design and scale community-driven climate restoration programmes across Africa by
+                  strengthening capacities and empowering women and youth to lead citizen science, innovation,
+                  and implementation across climate, water, health, and food systems, delivering measurable
+                  improvements in ecosystem health and community livelihoods.
                 </p>
               </div>
             </motion.div>
@@ -139,9 +133,8 @@ export default function AboutPage() {
                 </div>
                 <h2 className="text-2xl font-bold mb-4 font-serif">Our Vision</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  To become Africa's leading Practo-Academia hub — bridging community
-                  practice and academic research to achieve gender-responsive justice in
-                  health, climate action, and community-led inquiry across the continent.
+                  To be Africa's leading engine for climate restoration, scaling community-led solutions that
+                  regenerate ecosystems and drive resilient, inclusive development at scale.
                 </p>
               </div>
             </motion.div>
@@ -167,8 +160,8 @@ export default function AboutPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">Our Model</p>
-              <h2 className="text-4xl font-bold mb-7 font-serif">A Holistic Ecosystem for Restoration</h2>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">Our Approach</p>
+              <h2 className="text-4xl font-bold mb-7 font-serif">Community-Led Implementation</h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 Our model is built on four pillars that create a self-sustaining cycle. We
                 don't just plant trees — we build systems that ensure they survive, thrive,
@@ -203,7 +196,7 @@ export default function AboutPage() {
             >
               <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-4 border-border/60">
                 <img
-                  src="https://images.unsplash.com/photo-1542601906990-b4d3fb773b09?auto=format&fit=crop&q=80&w=1200"
+                  src="images/topafrica.jpg"
                   alt="Restoration Team"
                   className="w-full h-full object-cover"
                 />
@@ -232,13 +225,13 @@ export default function AboutPage() {
         </div>
         <Container className="relative z-10">
           <div className="text-center max-w-xl mx-auto mb-14">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">Our DNA</p>
+            <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary mb-3">Our DNA</p>
             <h2 className="text-4xl font-bold mb-4 font-serif">Core Values</h2>
             <p className="text-muted-foreground">These principles guide every project, partnership, and community initiative we lead.</p>
           </div>
 
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
             variants={stagger}
             initial="initial"
             whileInView="animate"
@@ -309,19 +302,19 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="order-1 lg:order-2"
+              className="order-1 lg:order-2 bg-background/90 border border-white/15 rounded-3xl p-8 shadow-2xl backdrop-blur-sm"
             >
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">Our Leadership</p>
-              <h2 className="text-4xl font-bold mb-6 font-serif">Visionary Leadership</h2>
+              <h2 className="text-4xl font-bold mb-6 font-serif text-foreground">Visionary Leadership</h2>
               {/* Pull quote */}
               <div className="relative pl-6 mb-7 border-l-4 border-primary/40">
                 <Quote className="absolute -top-1 -left-2 w-5 h-5 text-primary/40" />
-                <p className="text-xl text-muted-foreground font-serif italic leading-relaxed">
+                <p className="text-xl text-foreground font-serif italic leading-relaxed">
                   "Our goal is not just to restore nature, but to restore hope for millions
                   of Africans who depend on these ecosystems."
                 </p>
               </div>
-              <div className="space-y-4 text-muted-foreground leading-relaxed text-sm">
+              <div className="space-y-4 text-foreground leading-relaxed text-sm">
                 <p>
                   Dr. Stella Wanjala is the Founder and Lead Researcher at ICRA, bringing
                   over 25 years of experience in community development, climate action, and
@@ -346,7 +339,7 @@ export default function AboutPage() {
                 ].map(({ val, lab }) => (
                   <div key={lab}>
                     <div className="text-2xl font-bold text-primary">{val}</div>
-                    <div className="text-xs uppercase tracking-widest text-muted-foreground font-medium mt-0.5">{lab}</div>
+                    <div className="text-xs uppercase tracking-widest text-foreground/80 font-medium mt-0.5">{lab}</div>
                   </div>
                 ))}
               </div>

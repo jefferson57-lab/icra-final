@@ -49,20 +49,31 @@ export function Navbar({ appName = 'Institute of Climate Restoration for Africa'
   const routerState = useRouterState()
   const currentPath = routerState.location.pathname
 
-  // Sync dark mode with html class
+  // Load preferred theme from localStorage on mount
   useEffect(() => {
     const html = document.documentElement
+    const savedTheme = window.localStorage.getItem('icra-theme')
+    if (savedTheme === 'dark') {
+      html.classList.add('dark')
+    } else {
+      html.classList.remove('dark')
+    }
+    setIsDarkMode(html.classList.contains('dark'))
+
     const observer = new MutationObserver(() => {
-      setIsDarkMode(html.classList.contains('dark'))
+      const dark = html.classList.contains('dark')
+      setIsDarkMode(dark)
+      window.localStorage.setItem('icra-theme', dark ? 'dark' : 'light')
     })
     observer.observe(html, { attributes: true, attributeFilter: ['class'] })
-    setIsDarkMode(html.classList.contains('dark'))
     return () => observer.disconnect()
   }, [])
 
   const toggleDark = () => {
     const html = document.documentElement
-    html.classList.toggle('dark')
+    const darkMode = html.classList.toggle('dark')
+    window.localStorage.setItem('icra-theme', darkMode ? 'dark' : 'light')
+    setIsDarkMode(darkMode)
   }
 
   useEffect(() => {
@@ -115,26 +126,23 @@ export function Navbar({ appName = 'Institute of Climate Restoration for Africa'
                   <img
                     src="/images/logo_icra.png"
                     alt="ICRA Logo"
-                    className="h-10 w-10 object-contain rounded-xl transition-transform duration-300 group-hover:scale-105"
+                    className="h-16 w-16 object-contain rounded-xl transition-transform duration-300 group-hover:scale-105"
                     onError={() => setLogoError(true)}
                   />
                 ) : (
-                  <div className="h-10 w-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                    <ICRAEmblem className="w-7 h-7 text-primary-foreground" />
+                  <div className="h-16 w-16 rounded-xl bg-primary text-primary-foreground flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                    <ICRAEmblem className="w-10 h-10 text-primary-foreground" />
                   </div>
                 )}
               </div>
 
-              {/* Text brand – full on lg, abbreviated on sm */}
+              {/* Text brand – larger on all screens */}
               <div className="flex flex-col leading-none">
-                <span className="hidden lg:block text-[13px] font-bold tracking-tight text-foreground leading-snug">
+                <span className="text-lg md:text-xl font-bold tracking-tight text-foreground leading-tight">
                   Institute of Climate Restoration
                 </span>
-                <span className="hidden lg:block text-[11px] font-semibold tracking-[0.18em] uppercase text-primary">
+                <span className="text-sm md:text-base font-semibold tracking-[0.15em] uppercase text-primary">
                   for Africa
-                </span>
-                <span className="block lg:hidden text-[15px] font-extrabold tracking-tight text-foreground">
-                  ICRA
                 </span>
               </div>
             </Link>
@@ -185,6 +193,13 @@ export function Navbar({ appName = 'Institute of Climate Restoration for Africa'
                 asChild
               >
                 <Link to="/contact">Get Involved</Link>
+              </Button>
+              <Button
+                size="sm"
+                className="hidden sm:flex h-9 px-5 rounded-full font-semibold text-sm shadow-sm"
+                asChild
+              >
+                <a href="/updated-profile-ICRA.pdf" download="ICRA-profile.pdf">Download Profile</a>
               </Button>
 
               {/* Hamburger – mobile only */}
@@ -273,6 +288,14 @@ export function Navbar({ appName = 'Institute of Climate Restoration for Africa'
             >
               Get Involved
             </Link>
+            <a
+              href="/updated-profile-ICRA.pdf"
+              download="ICRA-profile.pdf"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center justify-center w-full h-11 px-4 text-sm font-semibold rounded-xl bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors"
+            >
+              Download Profile
+            </a>
             <button
               onClick={toggleDark}
               className="flex items-center justify-center gap-2 w-full h-10 px-4 text-sm font-medium rounded-xl text-muted-foreground hover:bg-muted/60 hover:text-foreground transition-colors"

@@ -27,22 +27,16 @@ export function Footer() {
 
   return (
     <footer className="border-t bg-muted/30">
-      <Container className="py-12">
-        <Stack direction="column" gap={8}>
+      <Container className="py-16">
+        <Stack direction="column" gap={10}>
           {/* Main footer content */}
-          <Stack direction="column" gap={8} className="md:flex-row md:justify-between">
-            {/* Brand section */}
+          <Stack direction="column" gap={10} className="md:flex-row md:justify-between md:items-start">
+            {/* Brand + intro section */}
             <VStack align="start" gap={4} className="max-w-sm">
-              <Link to="/" className="flex items-center gap-2">
-                <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-primary-foreground">
-                  <Leaf className="w-4 h-4" />
-                </div>
-                <span className="font-bold text-lg">ICRA Climate</span>
-              </Link>
-              <p className="text-sm text-muted-foreground">
-                Working to combat climate change through community action, 
-                sustainable practices, and environmental restoration.
-              </p>
+              <p className="text-base font-bold uppercase tracking-widest text-primary">ICRA Center</p>
+              <h3 className="text-2xl font-extrabold">Premier African hub for climate restoration research</h3>
+              <p className="text-sm text-muted-foreground">General inquiries & partnerships | Pan-African Operations</p>
+              <p className="text-sm text-muted-foreground">Active field offices and research centres across the continent</p>
             </VStack>
 
             {/* Quick Links */}
@@ -61,19 +55,20 @@ export function Footer() {
 
             {/* Contact Info */}
             <VStack align="start" gap={3}>
-              <p className="text-sm font-semibold">Contact Us</p>
+              <p className="text-sm font-semibold">Contact & Hours</p>
               <HStack gap={2} className="text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4 flex-shrink-0" />
-                <span>ICRA House, Ngong Road<br />Nairobi, Kenya</span>
+                <span>Nairobi, Kenya</span>
               </HStack>
               <HStack gap={2} className="text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 flex-shrink-0" />
-                <span>+254 700 000 000</span>
+                <span>+254 (0) 725 216 292</span>
               </HStack>
               <HStack gap={2} className="text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 flex-shrink-0" />
-                <span>hq@icra-africa.org</span>
+                <span>climaterestorationafrica@gmail.com</span>
               </HStack>
+              <p className="text-xs text-muted-foreground">Mon–Fri, 9am–5pm EAT</p>
             </VStack>
           </Stack>
 
