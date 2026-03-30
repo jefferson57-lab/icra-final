@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Link, useRouterState } from '@tanstack/react-router'
 import { Button } from '@blinkdotnew/ui'
 import { Moon, Sun, Menu, X } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
 
 // ── ICRA SVG Emblem (used when no image logo is available) ──────────────────
 function ICRAEmblem({ className = 'w-10 h-10' }: { className?: string }) {
@@ -84,20 +83,8 @@ export function Navbar({ appName = 'Institute of Climate Restoration for Africa'
   }, [])
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && mobileOpen) {
-        setMobileOpen(false)
-      }
-    }
-    document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [mobileOpen])
-
-  // Prevent body scroll when mobile drawer open
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [mobileOpen])
+    setMobileOpen(false)
+  }, [currentPath])
 
   const navItems = [
     { path: '/', label: 'Home' },
@@ -232,108 +219,33 @@ export function Navbar({ appName = 'Institute of Climate Restoration for Africa'
         </div>
       </header>
 
-      {/* ── Mobile drawer ── */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
-              onClick={() => setMobileOpen(false)}
-              aria-hidden="true"
-            />
-
-            {/* Slide-down menu */}
-            <motion.div
-              initial={{ y: -100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -100, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 260, damping: 25 }}
-              className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border/60 shadow-2xl rounded-b-2xl overflow-hidden"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Navigation menu"
-            >
-              {/* Panel header */}
-              <div className="flex items-center justify-between px-5 h-[70px] border-b border-border/60 shrink-0">
-                <Link to="/" className="flex items-center gap-2.5" onClick={() => setMobileOpen(false)}>
-                  {!logoError ? (
-                    <img
-                      src="/images/logo_icra.png"
-                      alt="ICRA"
-                      className="h-8 w-8 object-contain rounded-lg"
-                      onError={() => setLogoError(true)}
-                    />
-                  ) : (
-                    <div className="h-8 w-8 rounded-lg bg-primary text-primary-foreground flex items-center justify-center">
-                      <ICRAEmblem className="w-5 h-5 text-primary-foreground" />
-                    </div>
-                  )}
-                  <span className="font-bold text-sm">ICRA</span>
-                </Link>
-                <button
-                  onClick={() => setMobileOpen(false)}
-                  className="h-9 w-9 flex items-center justify-center rounded-lg hover:bg-muted/60 text-muted-foreground hover:text-foreground transition-colors active:scale-95"
-                  aria-label="Close menu"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              {/* Nav links */}
-              <nav className="flex-1 flex flex-col p-4 gap-1 overflow-y-auto max-h-[calc(100vh-140px)]">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setMobileOpen(false)}
-                    className={`flex items-center px-4 py-4 text-base font-semibold rounded-xl transition-all duration-200 active:scale-95 ${
-                      isActive(item.path)
-                        ? 'bg-primary/10 text-primary'
-                        : 'text-foreground/70 hover:text-foreground hover:bg-muted/60'
-                    }`}
-                  >
-                    {isActive(item.path) && (
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mr-3 flex-shrink-0" />
-                    )}
-                    {item.label}
-                  </Link>
-                ))}
-              </nav>
-
-              {/* Panel footer */}
-              <div className="p-5 border-t border-border/60 space-y-2 shrink-0">
-                <Link
-                  to="/contact"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center w-full h-12 px-4 text-base font-semibold rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-colors active:scale-95"
-                >
-                  Get Involved
-                </Link>
-                <a
-                  href="/updated-profile-ICRA.pdf"
-                  download="ICRA-profile.pdf"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center w-full h-12 px-4 text-base font-semibold rounded-xl bg-secondary text-secondary-foreground hover:bg-secondary/90 transition-colors active:scale-95"
-                >
-                  Download Profile
-                </a>
-                <button
-                  onClick={() => { toggleDark(); setMobileOpen(false); }}
-                  className="flex items-center justify-center gap-2 w-full h-10 px-4 text-sm font-medium rounded-xl text-muted-foreground hover:bg-muted/60 hover:text-foreground transition-colors active:scale-95"
-                >
-                  {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-                  {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-                </button>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      {/* ── Mobile Navigation ── */}
+      {mobileOpen && (
+        <div className={`md:hidden border-t backdrop-blur-2xl transition-all duration-300 ${
+          isDarkMode
+            ? 'border-slate-800 bg-slate-900/95'
+            : 'border-slate-200 bg-white/90'
+        }`}>
+          <div className="px-6 py-6 space-y-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() => setMobileOpen(false)}
+                className={`block w-full text-left px-3 py-2 rounded-lg transition-all ${
+                  isDarkMode
+                    ? 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                    : 'text-slate-700 hover:bg-slate-100 hover:text-[#2D6A4F]'
+                } ${
+                  isActive(item.path) ? 'text-[#52B788]' : ''
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Spacer below fixed nav */}
       <div className="h-[70px]" />
