@@ -47,20 +47,20 @@ function FadeUp({ children, delay = 0, className = '' }) {
 // ── Data ─────────────────────────────────────────────────────────────────────
 const priorityAreas = [
   {
-    title: 'Sustainable Agriculture',
-    description: 'Regenerative farming techniques that restore soil health and increase yields for African smallholder farmers.',
+    title: 'Mangrove Restoration',
+    description: 'Restoring vital mangrove forests along African coastlines to protect shorelines, sequester carbon, and support marine biodiversity.',
     icon: <Sprout className="w-6 h-6" />,
     image: '/images/image_6.jpg',
   },
   {
-    title: 'Reforestation & Biodiversity',
-    description: 'Scientific approaches to restoring native forests and protecting unique African wildlife corridors.',
+    title: 'Savanna Rehabilitation',
+    description: 'Rehabilitating degraded savannas through controlled burns, seed banking, and community-led restoration efforts.',
     icon: <Leaf className="w-6 h-6" />,
     image: '/images/image_1.jpg',
   },
   {
-    title: 'Water Resource Management',
-    description: 'Innovative water harvesting and conservation methods to combat drought and ensure community resilience.',
+    title: 'Forest Landscape Restoration',
+    description: 'Large-scale restoration of degraded forest landscapes using native species and community participation.',
     icon: <Droplets className="w-6 h-6" />,
     image: '/images/image_5.jpg',
   },
@@ -68,7 +68,7 @@ const priorityAreas = [
 
 const stats = [
   { value: '2.5M+', label: 'Trees Planted',       icon: <TreePine className="w-4 h-4" /> },
-  { value: '18',    label: 'African Countries',    icon: <Leaf     className="w-4 h-4" /> },
+  { value: '10+',    label: 'Strategic Partners',    icon: <Leaf     className="w-4 h-4" /> },
   { value: '50k+',  label: 'Community Members',    icon: <Users2   className="w-4 h-4" /> },
   { value: '15yr+', label: 'Restoration Impact',   icon: <BarChart3 className="w-4 h-4" /> },
 ]
@@ -89,7 +89,7 @@ const Overline = ({ children }) => (
 const PrimaryBtn = ({ children, onClick, white = false, outline = false }) => (
   <button
     onClick={onClick}
-    className={`inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold transition-all duration-200 hover:scale-[1.03] active:scale-[0.98] ${
+    className={`w-full md:w-auto inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 hover:scale-[1.03] active:scale-[0.98] ${
       white
         ? 'bg-white text-[#2D6A4F] hover:bg-white/92 shadow-xl shadow-black/20'
         : outline
@@ -129,7 +129,7 @@ export default function HomePage({ onNavigate }) {
           <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#52B788]/10 to-transparent" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-24 w-full pt-32">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-24 w-full pt-32">
           <div className="max-w-3xl">
             {/* Badge */}
             <div
@@ -138,25 +138,22 @@ export default function HomePage({ onNavigate }) {
             >
               <span className="inline-flex items-center gap-2 py-1.5 px-4 text-sm font-semibold border border-[#52B788]/40 bg-[#52B788]/15 text-[#52B788] backdrop-blur-sm rounded-full">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#52B788] animate-pulse" />
-                Community-Led Climate Restoration
+                Restoring Africa's Resilience
               </span>
             </div>
 
             {/* Heading */}
             <div className="bg-black/45 backdrop-blur-sm rounded-2xl p-6" style={{ opacity: h2 ? 1 : 0, transform: h2 ? 'translateY(0)' : 'translateY(24px)', transition: 'all .65s ease' }}>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.06] tracking-tight mb-6">
-                Africa's Leading Platform for{' '}
-                <span className="text-[#52B788] italic" style={{ fontFamily: 'Georgia, serif' }}>Climate Restoration</span>
+                Science-Driven{' '}
+                <span className="text-[#52B788] italic" style={{ fontFamily: 'Georgia, serif' }}>Climate Restoration</span> for Africa
               </h1>
             </div>
 
             {/* Body */}
             <div className="bg-black/35 backdrop-blur-sm rounded-2xl p-6 mt-4" style={{ opacity: h3 ? 1 : 0, transform: h3 ? 'translateY(0)' : 'translateY(24px)', transition: 'all .65s ease' }}>
               <p className="text-lg md:text-xl text-white/75 mb-10 leading-relaxed max-w-2xl">
-                ICRA is a continental implementation and knowledge platform that designs, tests, and
-                scales community-driven climate restoration solutions. We integrate implementation,
-                capacity building, policy engagement, and data systems into scalable programs
-                delivering measurable impact.
+                Empowering communities across Africa to lead climate and health solutions through citizen science, bridging research and real-world action. We integrate innovation, local knowledge, and inclusive collaboration to drive sustainable change in community health, water security, and agri-food systems.
               </p>
             </div>
 
@@ -166,7 +163,7 @@ export default function HomePage({ onNavigate }) {
               className="flex flex-wrap gap-4"
             >
               <PrimaryBtn onClick={() => nav('work')}>
-                Explore Our Work <ArrowRight className="w-4 h-4" />
+                Explore Our Programs <ArrowRight className="w-4 h-4" />
               </PrimaryBtn>
               <PrimaryBtn outline onClick={() => nav('about')}>
                 Learn More
@@ -198,19 +195,15 @@ export default function HomePage({ onNavigate }) {
 
       {/* ── MISSION ──────────────────────────────────────────────────────── */}
       <section className="relative py-24 overflow-hidden bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
             <FadeUp>
               <Overline>What We Do</Overline>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight" style={{ fontFamily: 'Georgia, serif' }}>
-                Bridging Science,{' '}
-                <span className="text-[#52B788]">Communities & Action</span>
+                A Vision for a <span className="text-[#52B788]">Thriving African Continent</span>
               </h2>
-              <p className="text-lg text-slate-500 mb-10 leading-relaxed">
-                As a Practo-Academia Platform, ICRA connects communities, governments, research
-                institutions, and development partners to co-create and implement climate solutions
-                grounded in local realities. We lead on-the-ground climate programs while advancing
-                water security, ecosystem restoration, and community well-being across the continent.
+              <p className="text-sm md:text-base text-slate-500 mb-10 leading-relaxed">
+                The Institute of Climate Restoration for Africa (I.C.R.A) serves as the continent's premier hub for climate solutions. We bridge the gap between global climate goals and local African realities.
               </p>
 
               {/* Mobile stats */}
@@ -250,19 +243,18 @@ export default function HomePage({ onNavigate }) {
 
       {/* ── PRIORITY AREAS ───────────────────────────────────────────────── */}
       <section className="relative py-24 bg-slate-50 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
           <FadeUp className="text-center max-w-2xl mx-auto mb-16">
             <Overline>Our Focus</Overline>
             <h2 className="text-4xl md:text-5xl font-bold mb-5" style={{ fontFamily: 'Georgia, serif' }}>
               Priority Restoration Areas
             </h2>
-            <p className="text-lg text-slate-500">
-              We target the most critical ecosystems where restoration has the highest impact on
-              climate and communities.
+            <p className="text-sm md:text-base text-slate-500">
+              ICRA focuses on key ecosystems and restoration challenges across Africa, from coastal mangroves to arid savannas.
             </p>
           </FadeUp>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {priorityAreas.map((area, i) => (
               <FadeUp key={i} delay={i * 120}>
                 <div className="h-full group hover:shadow-2xl transition-all duration-500 bg-white overflow-hidden rounded-3xl border border-slate-100">
@@ -277,8 +269,8 @@ export default function HomePage({ onNavigate }) {
                       {area.icon}
                     </div>
                   </div>
-                  <div className="p-7">
-                    <h3 className="text-xl font-bold mb-3 group-hover:text-[#52B788] transition-colors duration-200">
+                  <div className="p-4 md:p-6">
+                    <h3 className="text-lg md:text-2xl font-bold mb-3 group-hover:text-[#52B788] transition-colors duration-200">
                       {area.title}
                     </h3>
                     <p className="text-slate-500 leading-relaxed text-sm mb-5">{area.description}</p>
@@ -297,8 +289,8 @@ export default function HomePage({ onNavigate }) {
       </section>
 
       {/* ── PARTNERS STRIP ───────────────────────────────────────────────── */}
-      <section className="relative py-14 border-y border-slate-200 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="relative py-8 md:py-16 border-y border-slate-200 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
           <p className="text-center text-xs font-bold uppercase tracking-[0.25em] text-slate-400 mb-8">
             Trusted Partnerships & Affiliations
           </p>
@@ -316,7 +308,7 @@ export default function HomePage({ onNavigate }) {
       </section>
 
       {/* ── IMPACT CTA ───────────────────────────────────────────────────── */}
-      <section className="relative py-28 overflow-hidden">
+      <section className="relative py-8 md:py-16 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="/images/image_5.jpg"
@@ -333,22 +325,21 @@ export default function HomePage({ onNavigate }) {
           />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
           <FadeUp className="max-w-3xl mx-auto text-center">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/55 mb-4">Join the Movement</p>
             <h2
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
               style={{ fontFamily: 'Georgia, serif' }}
             >
-              Ready to Restore Africa, Together?
+              Let's Restore Africa, Together.
             </h2>
-            <p className="text-lg text-white/80 mb-10 leading-relaxed">
-              Whether you're a researcher, community leader, or organization — there's a place for
-              you in ICRA's mission.
+            <p className="text-sm md:text-base text-white/80 mb-10 leading-relaxed">
+              Join ICRA in our mission to restore Africa's ecosystems and build resilient communities. Your partnership can make a lasting impact.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <PrimaryBtn white onClick={() => nav('contact')}>
-                Partner with ICRA
+                Partner With I.C.R.A
               </PrimaryBtn>
               <PrimaryBtn outline onClick={() => nav('about')}>
                 Our Approach

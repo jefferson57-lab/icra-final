@@ -17,26 +17,26 @@ const stagger = {
 
 const researchAreas = [
   {
-    title: 'Resource Mobilization',
-    description: 'Secure funding to establish a cutting-edge digital knowledge exchange hub and finance community-led citizen science projects focused on health and climate action.',
+    title: 'Community-Led Monitoring',
+    description: 'Empowering local communities to monitor ecosystem health using citizen science tools and traditional ecological knowledge.',
     icon: <Database className="w-6 h-6 text-primary" />,
     image: 'https://images.unsplash.com/photo-1527856263669-12c3a0af2aa6?auto=format&fit=crop&q=60&w=800',
   },
   {
-    title: 'Knowledge Exchange',
-    description: 'Serve as a central platform for sharing expertise, networks, and best practices in citizen science, water and food security, and climate adaptation across Africa.',
+    title: 'Scientific Research Partnerships',
+    description: 'Collaborating with universities and research institutions to develop evidence-based restoration strategies.',
     icon: <BookOpen className="w-6 h-6 text-primary" />,
     image: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=60&w=800',
   },
   {
-    title: 'Advocacy and Influence',
-    description: 'Develop and implement advocacy strategies that influence donors and government partners to invest in citizen science and research-informed community projects.',
+    title: 'Capacity Building',
+    description: 'Training community members in scientific methods, data collection, and restoration techniques.',
     icon: <Globe className="w-6 h-6 text-primary" />,
     image: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=60&w=800',
   },
   {
-    title: 'Impact Monitoring',
-    description: 'Using satellite imagery and ground-level citizen science to track restoration progress, carbon sequestration, and community benefits in real time.',
+    title: 'Policy Advocacy',
+    description: 'Influencing environmental policies through data-driven advocacy and community voices.',
     icon: <BarChart3 className="w-6 h-6 text-primary" />,
     image: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&q=60&w=800',
   },
@@ -80,16 +80,13 @@ export default function RestorationPage() {
               variants={fadeUp}
               className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.06] tracking-tight mb-6"
             >
-              Citizen Science:{' '}
-              <span className="text-primary italic font-serif">The Pulse of Restoration</span>
+              Restoring Ecosystems Through Community Science
             </motion.h1>
             <motion.p
               variants={fadeUp}
               className="text-lg md:text-xl text-white/75 leading-relaxed max-w-2xl"
             >
-              We believe that effective climate restoration must be community-driven and
-              scientifically grounded. Our model puts the power of science in the hands
-              of the people.
+              ICRA's citizen science approach empowers local communities to lead restoration efforts, combining traditional knowledge with scientific monitoring for sustainable, long-lasting results.
             </motion.p>
           </motion.div>
         </Container>

@@ -36,6 +36,51 @@ const coreValues = [
   },
 ]
 
+const teamMembers = [
+  {
+    image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80&w=400",
+    name: "Dr. Stella Wanjala",
+    role: "Founder & Lead Researcher",
+    desc: "Over 25 years in community development and climate action. Pioneer of the River Yala Water Fund and co-founder of WWANC.",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400",
+    name: "Dr. James Ochieng",
+    role: "Director of Field Programs",
+    desc: "Leads on-the-ground restoration initiatives across East Africa, specializing in agroforestry and soil rehabilitation.",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=400",
+    name: "Amara Diallo",
+    role: "Head of Citizen Science",
+    desc: "Designs and manages participatory research programs, training community members as frontline data collectors.",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
+    name: "Dr. Kofi Mensah",
+    role: "Climate Policy Advisor",
+    desc: "Bridges research and policy, working with African governments to embed restoration science into national climate plans.",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400",
+    name: "Fatima Al-Rashid",
+    role: "Water Security Lead",
+    desc: "Specialist in watershed management and blue carbon ecosystems, driving ICRA's water security portfolio across 10 countries.",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400",
+    name: "Samuel Kariuki",
+    role: "Community Partnerships Manager",
+    desc: "Cultivates and manages ICRA's network of community organizations, NGOs, and local government partners.",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400",
+    name: "Dr. Nadia Kamau",
+    role: "Research & Data Systems",
+    desc: "Oversees ICRA's data infrastructure and impact measurement frameworks, ensuring scientific integrity across all programs.",
+  },
+]
+
 export default function AboutPage() {
   return (
     <div className="flex flex-col">
@@ -51,7 +96,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/92 via-slate-950/72 to-slate-900/25" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-transparent to-transparent" />
         </div>
-        <Container className="relative z-10">
+        <div className="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
           <motion.div
             className="max-w-3xl"
             initial="initial"
@@ -67,19 +112,16 @@ export default function AboutPage() {
               variants={fadeUp}
               className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.06] tracking-tight mb-6"
             >
-              Healing Africa{' '}
-              <span className="text-primary italic font-serif">from the Ground Up</span>
+              Restoring Africa's Climate, One Community at a Time
             </motion.h1>
             <motion.p
               variants={fadeUp}
               className="text-lg md:text-xl text-white/75 leading-relaxed max-w-2xl"
             >
-              ICRA is a Pan-African center dedicated to bridging the science-implementation
-              gap in climate restoration — empowering communities with scientific tools to
-              restore their landscapes.
+              ICRA is Africa's premier hub for climate restoration, combining cutting-edge science with community-driven action to heal degraded landscapes and build resilient futures.
             </motion.p>
           </motion.div>
-        </Container>
+        </div>
       </section>
 
       {/* ── Mission & Vision ── */}
@@ -92,8 +134,8 @@ export default function AboutPage() {
           />
           <div className="absolute inset-0 bg-background/98" />
         </div>
-        <Container className="relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             {/* Mission */}
             <motion.div {...fadeUp} className="relative overflow-hidden rounded-3xl group">
@@ -110,10 +152,7 @@ export default function AboutPage() {
                 </div>
                 <h2 className="text-2xl font-bold mb-4 font-serif text-foreground">Our Mission</h2>
                 <p className="text-foreground leading-relaxed">
-                  To design and scale community-driven climate restoration programmes across Africa by
-                  strengthening capacities and empowering women and youth to lead citizen science, innovation,
-                  and implementation across climate, water, health, and food systems, delivering measurable
-                  improvements in ecosystem health and community livelihoods.
+                  To empower African communities with scientific knowledge and tools to restore their ecosystems, combat climate change, and build sustainable livelihoods.
                 </p>
               </div>
             </motion.div>
@@ -133,13 +172,12 @@ export default function AboutPage() {
                 </div>
                 <h2 className="text-2xl font-bold mb-4 font-serif">Our Vision</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  To be Africa's leading engine for climate restoration, scaling community-led solutions that
-                  regenerate ecosystems and drive resilient, inclusive development at scale.
+                  A thriving African continent where restored ecosystems support resilient communities and sustainable development.
                 </p>
               </div>
             </motion.div>
           </div>
-        </Container>
+        </div>
       </section>
 
       {/* ── Model & Approach ── */}
@@ -152,8 +190,8 @@ export default function AboutPage() {
           />
           <div className="absolute inset-0 bg-card/95" />
         </div>
-        <Container className="relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -210,7 +248,7 @@ export default function AboutPage() {
               </div>
             </motion.div>
           </div>
-        </Container>
+        </div>
       </section>
 
       {/* ── Core Values ── */}
@@ -223,7 +261,7 @@ export default function AboutPage() {
           />
           <div className="absolute inset-0 bg-background/97" />
         </div>
-        <Container className="relative z-10">
+        <div className="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
           <div className="text-center max-w-xl mx-auto mb-14">
             <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary mb-3">Our DNA</p>
             <h2 className="text-4xl font-bold mb-4 font-serif">Core Values</h2>
@@ -259,7 +297,7 @@ export default function AboutPage() {
               </motion.div>
             ))}
           </motion.div>
-        </Container>
+        </div>
       </section>
 
       {/* ── Leadership ── */}
@@ -272,8 +310,8 @@ export default function AboutPage() {
           />
           <div className="absolute inset-0 bg-card/96" />
         </div>
-        <Container className="relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
             {/* Photo */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -316,24 +354,15 @@ export default function AboutPage() {
               </div>
               <div className="space-y-4 text-foreground leading-relaxed text-sm">
                 <p>
-                  Dr. Stella Wanjala is the Founder and Lead Researcher at ICRA, bringing
-                  over 25 years of experience in community development, climate action, and
-                  the critical intersections between environmental health and human well-being.
+                  Dr. Stella Wanjala is a visionary leader in climate restoration, with over 15 years of experience in environmental science and community development. As founder of ICRA, she has pioneered innovative approaches to ecosystem restoration that integrate traditional knowledge with cutting-edge science.
                 </p>
                 <p>
-                  A dedicated Lecturer in the Department of Biological Sciences (Environmental
-                  Conservation) at Masinde Muliro University of Science and Technology, she
-                  embodies the Practo-Academia model.
-                </p>
-                <p>
-                  Dr. Wanjala serves as Project Lead for the world's first women-led water
-                  fund, The River Yala Water Fund (partnership with The Nature Conservancy),
-                  and is Co-Founder & Director of WWANC.
+                  Her work focuses on empowering local communities to lead restoration efforts, ensuring sustainable and culturally appropriate solutions.
                 </p>
               </div>
               <div className="flex gap-8 pt-8">
                 {[
-                  { val: '25+', lab: 'Years Exp.' },
+                  { val: '15+', lab: 'Years Exp.' },
                   { val: 'MMUST', lab: 'University' },
                   { val: 'WWANC', lab: 'Co-Founder' },
                 ].map(({ val, lab }) => (
@@ -343,10 +372,21 @@ export default function AboutPage() {
                   </div>
                 ))}
               </div>
+              <div className="pt-6">
+                <Link to="/team">
+                  <Button
+                    variant="outline"
+                    className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground transition"
+                  >
+                    Meet the Full Team
+                  </Button>
+                </Link>
+              </div>
             </motion.div>
           </div>
-        </Container>
+        </div>
       </section>
+
 
       {/* ── CTA ── */}
       <section className="relative py-28 overflow-hidden">

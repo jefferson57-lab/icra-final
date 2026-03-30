@@ -5,13 +5,14 @@ import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import RestorationPage from './pages/RestorationPage'
 import ContactPage from './pages/ContactPage'
+import TeamPage from './pages/TeamPage'
 
 // Define routes
 const rootRoute = createRootRoute({
   component: () => (
-    <div className="min-h-screen flex flex-col">
+    <div className="w-full min-h-screen flex flex-col overflow-x-hidden">
       <Navbar />
-      <main className="flex-1 flex flex-col">
+      <main className="flex-1 flex flex-col w-full">
         <Outlet />
       </main>
       <Footer />
@@ -43,11 +44,18 @@ const contactRoute = createRoute({
   component: ContactPage,
 })
 
+const teamRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/team',
+  component: TeamPage,
+})
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   aboutRoute,
   restorationRoute,
   contactRoute,
+  teamRoute,
 ])
 
 const router = createRouter({ routeTree })

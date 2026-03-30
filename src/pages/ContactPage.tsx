@@ -47,7 +47,7 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/70 to-slate-950/30" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent" />
         </div>
-        <Container className="relative z-10">
+        <div className="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
           <motion.div
             className="max-w-3xl"
             initial="initial"
@@ -63,17 +63,16 @@ export default function ContactPage() {
               variants={fadeUp}
               className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6"
             >
-              Partner for a{' '}
-              <span className="text-primary italic font-serif">Resilient Africa</span>
+              Partner with ICRA for Lasting Impact
             </motion.h1>
             <motion.p
               variants={fadeUp}
               className="text-lg md:text-xl text-white/75 leading-relaxed max-w-2xl"
             >
-              We're always looking for visionary partners, researchers, and community leaders to join our mission. Let's start a conversation.
+              Connect with us to explore partnership opportunities, research collaborations, or community programs that drive real change across Africa.
             </motion.p>
           </motion.div>
-        </Container>
+        </div>
       </section>
 
       {/* ── Main Contact Section ── */}

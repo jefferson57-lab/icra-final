@@ -147,46 +147,41 @@ export function Navbar({ appName = 'Institute of Climate Restoration for Africa'
               </div>
             </Link>
 
-            {/* ── Desktop Navigation ── */}
-            <nav className="hidden md:flex items-center gap-0.5">
+            <div className="hidden md:flex items-center space-x-6">
               {navItems.map((item) => {
                 const active = isActive(item.path)
                 return (
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`
-                      relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200
-                      ${active
-                        ? 'text-primary'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
-                      }
-                    `}
+                    className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${
+                      active
+                        ? 'text-[#52B788]'
+                        : isDarkMode
+                        ? 'text-slate-300 hover:text-white'
+                        : 'text-slate-700 hover:text-[#2D6A4F]'
+                    }`}
                   >
                     {item.label}
                     {active && (
-                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-4 h-[2px] rounded-full bg-primary" />
+                      <span className="absolute left-0 bottom-0 w-full h-[2px] bg-gradient-to-r from-[#52B788] to-[#2D6A4F] rounded-full" />
                     )}
                   </Link>
                 )
               })}
-            </nav>
 
-            {/* ── Right Actions ── */}
-            <div className="flex items-center gap-1.5 shrink-0">
-              {/* Theme toggle */}
               <button
                 onClick={toggleDark}
-                className="h-9 w-9 flex items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
+                className={`p-2.5 rounded-xl transition-all duration-300 border ${
+                  isDarkMode
+                    ? 'bg-slate-800 hover:bg-slate-700 text-yellow-400 border-slate-700'
+                    : 'bg-white hover:bg-slate-100 text-slate-700 border-slate-200 shadow-sm'
+                }`}
                 aria-label="Toggle theme"
               >
-                {isDarkMode
-                  ? <Sun className="w-[17px] h-[17px]" />
-                  : <Moon className="w-[17px] h-[17px]" />
-                }
+                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
 
-              {/* CTA */}
               <Button
                 size="sm"
                 className="hidden sm:flex h-9 px-5 rounded-full font-semibold text-sm shadow-sm"
@@ -194,6 +189,7 @@ export function Navbar({ appName = 'Institute of Climate Restoration for Africa'
               >
                 <Link to="/contact">Get Involved</Link>
               </Button>
+
               <Button
                 size="sm"
                 className="hidden sm:flex h-9 px-5 rounded-full font-semibold text-sm shadow-sm"
@@ -201,15 +197,28 @@ export function Navbar({ appName = 'Institute of Climate Restoration for Africa'
               >
                 <a href="/updated-profile-ICRA.pdf" download="ICRA-profile.pdf">Download Profile</a>
               </Button>
+            </div>
 
-              {/* Hamburger – mobile only */}
+            <div className="md:hidden flex items-center gap-2">
               <button
-                className="md:hidden h-9 w-9 flex items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
+                onClick={toggleDark}
+                className={`p-2 rounded-lg transition-colors ${
+                  isDarkMode ? 'bg-slate-800 text-yellow-400' : 'bg-white border border-slate-200 text-slate-700 shadow-sm'
+                }`}
+                aria-label="Toggle theme"
+              >
+                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </button>
+
+              <button
                 onClick={() => setMobileOpen((v) => !v)}
+                className={`p-2 rounded-lg transition-colors ${
+                  isDarkMode ? 'hover:bg-slate-800' : 'hover:bg-slate-100 border border-slate-200'
+                }`}
                 aria-label="Toggle menu"
                 aria-expanded={mobileOpen}
               >
-                {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
           </div>
