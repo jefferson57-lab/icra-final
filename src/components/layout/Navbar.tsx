@@ -103,7 +103,7 @@ export function Navbar({ appName = 'Institute of Climate Restoration for Africa'
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}
+        className={`navbar fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="flex items-center justify-between h-[70px] gap-4">
@@ -111,7 +111,7 @@ export function Navbar({ appName = 'Institute of Climate Restoration for Africa'
             {/* ── Logo + Brand ── */}
             <Link
               to="/"
-              className="flex items-center gap-3 shrink-0 group"
+              className="navbar-brand flex items-center gap-3 shrink-0 group"
               aria-label="ICRA – Home"
             >
               {/* Logo image with SVG fallback */}
@@ -132,7 +132,7 @@ export function Navbar({ appName = 'Institute of Climate Restoration for Africa'
 
               {/* Text brand – larger on all screens */}
               <div className="flex flex-col leading-none">
-                <span className="text-lg md:text-xl font-bold tracking-tight text-foreground leading-tight">
+                <span className="navbar-title text-lg md:text-xl font-bold tracking-tight text-foreground leading-tight">
                   Institute of Climate Restoration
                 </span>
                 <span className="text-sm md:text-base font-semibold tracking-[0.15em] uppercase text-primary">

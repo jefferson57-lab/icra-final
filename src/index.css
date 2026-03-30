@@ -175,3 +175,33 @@
     transform: translateY(0);
   }
 }
+
+/* Custom Navbar Styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 60px;
+    flex-wrap: wrap;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    max-width: 80%;
+}
+
+.navbar-brand img {
+    height: auto;
+    max-height: 40px;
+    margin-right: 10px;
+}
+
+@media (max-width: 480px) {
+    .navbar-title {
+        font-size: 14px;
+    }
+}
