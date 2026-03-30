@@ -354,17 +354,18 @@ export default function AboutPage() {
               </div>
               <div className="space-y-4 text-foreground leading-relaxed text-sm">
                 <p>
-                  Dr. Stella Wanjala is a visionary leader in climate restoration, with over 15 years of experience in environmental science and community development. As founder of ICRA, she has pioneered innovative approaches to ecosystem restoration that integrate traditional knowledge with cutting-edge science.
+                  Dr. Stella Wanjala is a leading expert in climate change, environmental conservation, gender, and community development, with over 15 years of experience at the intersection of ecosystems, livelihoods, and community well-being. As Founder & Lead Researcher of ICRA, she champions the integration of science, communities, and climate action across Africa.
                 </p>
                 <p>
-                  Her work focuses on empowering local communities to lead restoration efforts, ensuring sustainable and culturally appropriate solutions.
+                  A pioneer in women-led natural resource management, Dr. Wanjala leads the world's first women-led water fund and advances gender-transformative climate solutions aligned with SDGs 5, 13, and 16. Her work seamlessly integrates biodiversity conservation, citizen science, and policy engagement to deliver measurable impact through research, advocacy, and capacity building.
                 </p>
               </div>
               <div className="flex gap-8 pt-8">
                 {[
                   { val: '15+', lab: 'Years Exp.' },
-                  { val: 'MMUST', lab: 'University' },
+                  { val: 'AWARD', lab: 'Fellow' },
                   { val: 'WWANC', lab: 'Co-Founder' },
+                  { val: 'ICRA', lab: 'Founder' },
                 ].map(({ val, lab }) => (
                   <div key={lab}>
                     <div className="text-2xl font-bold text-primary">{val}</div>
