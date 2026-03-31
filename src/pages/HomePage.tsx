@@ -122,6 +122,8 @@ export default function HomePage({ onNavigate }) {
           <img
             src="/images/image_3.jpg"
             alt="African savanna landscape"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/92 via-slate-950/65 to-slate-900/20" />
@@ -212,7 +214,23 @@ export default function HomePage({ onNavigate }) {
                 grounded in local realities. We lead on-the-ground climate programs while advancing
                 water security, ecosystem restoration, and community well-being across the continent.
               </p>
-              
+
+              {/* Mobile stats */}
+              <PrimaryBtn onClick={() => nav('work')}>
+                See Our Approach <ArrowRight className="w-4 h-4" />
+              </PrimaryBtn>
+            </FadeUp>
+
+            <FadeUp delay={150} className="relative">
+              <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+                <img
+                  src="/images/image_2.jpg"
+                  alt="Restoration Work"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                />
+              </div>
               {/* Floating quote card */}
               <div className="absolute -bottom-6 -left-6 bg-white border border-slate-200 p-6 rounded-2xl shadow-2xl max-w-[220px]">
                 <BarChart3 className="w-7 h-7 text-[#52B788] mb-3" />

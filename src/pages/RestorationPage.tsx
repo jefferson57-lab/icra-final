@@ -109,7 +109,7 @@ export default function RestorationPage() {
       <section className="relative py-28 md:py-40 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="images/about1.jpg"
+            src="images/gradient.jpg"
             alt="African landscape"
             className="w-full h-full object-cover"
           />
@@ -138,9 +138,9 @@ export default function RestorationPage() {
               variants={fadeUp}
               className="text-lg md:text-xl text-white/75 leading-relaxed max-w-2xl"
             >
-              From continental restoration to community innovation hubs, ICRA's flagship programmes
-              deliver integrated, science-backed climate action across Africa's most vulnerable
-              landscapes and communities.
+              Five integrated programmes spanning ecosystem restoration, water security,
+                  community innovation, climate leadership, and data-driven policy — delivered
+                  across the African continent.
             </motion.p>
           </motion.div>
         </Container>
@@ -150,7 +150,7 @@ export default function RestorationPage() {
       <section className="relative overflow-hidden">
 
         {/* Cinematic intro banner */}
-        <div className="relative h-[480px] md:h-[560px] overflow-hidden">
+        <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1920"
             alt="ICRA Flagship Programmes"
@@ -192,64 +192,71 @@ export default function RestorationPage() {
         </div>
 
         {/* Programme cards grid */}
-        <div className="relative bg-background">
-          <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-slate-950/30 to-transparent pointer-events-none z-10" />
-          <Container className="py-20">
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
-              variants={stagger}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-            >
-              {programmes.map(({ n, abbr, title, desc, label, points, tag, image }) => (
-                <motion.div
-                  key={n}
-                  variants={fadeUp}
-                  className={`group relative rounded-3xl overflow-hidden border border-border/60 hover:border-primary/40 hover:shadow-2xl transition-all duration-500 flex flex-col
-                    ${n === 5 ? 'md:col-span-2 xl:col-span-1' : ''}`}
-                >
-                  <div className="relative h-44 overflow-hidden flex-shrink-0">
-                    <img
-                      src={image}
-                      alt={title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/70" />
-                    <div className="absolute top-4 left-4 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full tracking-wide">
-                      {abbr}
-                    </div>
-                    <div className="absolute bottom-4 right-4 w-9 h-9 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white font-bold text-sm">
-                      {n}
-                    </div>
-                  </div>
-                  <div className="flex flex-col flex-1 p-6 bg-card">
-                    <h3 className="font-bold text-base mb-2 leading-snug">{title}</h3>
-                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{desc}</p>
-                    <div className="mt-auto pt-4 border-t border-border/50">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-primary mb-2">
-                        {label}
-                      </p>
-                      <ul className="space-y-1.5">
-                        {points.map((point, i) => (
-                          <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
-                            <span className="mt-1.5 w-1 h-1 rounded-full bg-primary flex-shrink-0" />
-                            {point}
-                          </li>
-                        ))}
-                      </ul>
-                      {tag && (
-                        <span className="inline-block mt-3 text-[10px] font-semibold px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
-                          {tag}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </Container>
-        </div>
+<div
+  className="relative bg-cover bg-center bg-no-repeat"
+  style={{ backgroundImage: "url('/images/gradient.jpg')" }}
+>
+  {/* Optional overlay for better readability */}
+  <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+
+  <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-slate-950/30 to-transparent pointer-events-none z-10" />
+
+  <Container className="py-20 relative z-20">
+    <motion.div
+      className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+      variants={stagger}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true }}
+    >
+      {programmes.map(({ n, abbr, title, desc, label, points, tag, image }) => (
+        <motion.div
+          key={n}
+          variants={fadeUp}
+          className={`group relative rounded-3xl overflow-hidden border border-border/60 hover:border-primary/40 hover:shadow-2xl transition-all duration-500 flex flex-col
+            ${n === 5 ? 'md:col-span-2 xl:col-span-1' : ''}`}
+        >
+          <div className="relative h-44 overflow-hidden flex-shrink-0">
+            <img
+              src={image}
+              alt={title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/70" />
+            <div className="absolute top-4 left-4 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full tracking-wide">
+              {abbr}
+            </div>
+            <div className="absolute bottom-4 right-4 w-9 h-9 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white font-bold text-sm">
+              {n}
+            </div>
+          </div>
+          <div className="flex flex-col flex-1 p-6 bg-card">
+            <h3 className="font-bold text-base mb-2 leading-snug">{title}</h3>
+            <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{desc}</p>
+            <div className="mt-auto pt-4 border-t border-border/50">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-primary mb-2">
+                {label}
+              </p>
+              <ul className="space-y-1.5">
+                {points.map((point, i) => (
+                  <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+                    <span className="mt-1.5 w-1 h-1 rounded-full bg-primary flex-shrink-0" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              {tag && (
+                <span className="inline-block mt-3 text-[10px] font-semibold px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                  {tag}
+                </span>
+              )}
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
+  </Container>
+</div>
       </section>
 
       {/* ── Research Areas ── */}
