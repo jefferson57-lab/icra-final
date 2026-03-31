@@ -4,17 +4,18 @@ import { Container, Card, CardContent, Badge, Button } from '@blinkdotnew/ui'
 import { Globe, Heart, Zap, Target, Eye, ArrowRight, Quote } from 'lucide-react'
 import { Link } from '@tanstack/react-router'
 
+/* ─── Animation variants ─────────────────────────────────────────── */
 const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
 }
 
 const stagger = {
+  initial: {},
   animate: { transition: { staggerChildren: 0.1 } },
 }
 
+/* ─── Data ───────────────────────────────────────────────────────── */
 const coreValues = [
   {
     title: 'Respect',
@@ -36,73 +37,72 @@ const coreValues = [
   },
 ]
 
+const pillars = [
+  { n: 1, title: 'Scientific Validation', desc: 'Rigorous testing of restoration techniques across diverse African climates.' },
+  { n: 2, title: 'Citizen Science Network', desc: "Training thousands of local 'Restoration Leads' to gather data and implement practices." },
+  { n: 3, title: 'Policy Advocacy', desc: 'Translating ground-level success into national and regional policy changes.' },
+  { n: 4, title: 'Sustainable Financing', desc: 'Connecting local projects with global climate finance through transparent monitoring.' },
+]
+
 const teamMembers = [
   {
-    image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80&w=400",
-    name: "Dr. Stella Wanjala",
-    role: "Founder & Lead Researcher",
-    desc: "Over 25 years in community development and climate action. Pioneer of the River Yala Water Fund and co-founder of WWANC.",
+    image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80&w=400',
+    name: 'Dr. Stella Wanjala',
+    role: 'Founder & Lead Researcher',
+    desc: 'Over 25 years in community development and climate action. Pioneer of the River Yala Water Fund and co-founder of WWANC.',
   },
   {
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400",
-    name: "Dr. James Ochieng",
-    role: "Director of Field Programs",
-    desc: "Leads on-the-ground restoration initiatives across East Africa, specializing in agroforestry and soil rehabilitation.",
+    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400',
+    name: 'Dr. James Ochieng',
+    role: 'Director of Field Programs',
+    desc: 'Leads on-the-ground restoration initiatives across East Africa, specializing in agroforestry and soil rehabilitation.',
   },
   {
-    image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=400",
-    name: "Amara Diallo",
-    role: "Head of Citizen Science",
-    desc: "Designs and manages participatory research programs, training community members as frontline data collectors.",
+    image: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=400',
+    name: 'Amara Diallo',
+    role: 'Head of Citizen Science',
+    desc: 'Designs and manages participatory research programs, training community members as frontline data collectors.',
   },
   {
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
-    name: "Dr. Kofi Mensah",
-    role: "Climate Policy Advisor",
-    desc: "Bridges research and policy, working with African governments to embed restoration science into national climate plans.",
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400',
+    name: 'Dr. Kofi Mensah',
+    role: 'Climate Policy Advisor',
+    desc: 'Bridges research and policy, working with African governments to embed restoration science into national climate plans.',
   },
   {
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400",
-    name: "Fatima Al-Rashid",
-    role: "Water Security Lead",
-    desc: "Specialist in watershed management and blue carbon ecosystems, driving ICRA's water security portfolio across 10 countries.",
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400',
+    name: 'Fatima Al-Rashid',
+    role: 'Water Security Lead',
+    desc: 'Specialist in watershed management and blue carbon ecosystems, driving ICRA\'s water security portfolio across 10 countries.',
   },
   {
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400",
-    name: "Samuel Kariuki",
-    role: "Community Partnerships Manager",
-    desc: "Cultivates and manages ICRA's network of community organizations, NGOs, and local government partners.",
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400',
+    name: 'Samuel Kariuki',
+    role: 'Community Partnerships Manager',
+    desc: 'Cultivates and manages ICRA\'s network of community organizations, NGOs, and local government partners.',
   },
   {
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400",
-    name: "Dr. Nadia Kamau",
-    role: "Research & Data Systems",
-    desc: "Oversees ICRA's data infrastructure and impact measurement frameworks, ensuring scientific integrity across all programs.",
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400',
+    name: 'Dr. Nadia Kamau',
+    role: 'Research & Data Systems',
+    desc: 'Oversees ICRA\'s data infrastructure and impact measurement frameworks, ensuring scientific integrity across all programs.',
   },
 ]
 
+/* ─── Page ───────────────────────────────────────────────────────── */
 export default function AboutPage() {
   return (
     <div className="flex flex-col">
 
-      {/* ── Hero header ── */}
+      {/* ── Hero ─────────────────────────────────────────────────── */}
       <section className="relative py-28 md:py-40 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
-            src="images/about1.jpg"
-            alt="African landscape"
-            className="w-full h-full object-cover"
-          />
+          <img src="images/about1.jpg" alt="African landscape" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/92 via-slate-950/72 to-slate-900/25" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-transparent to-transparent" />
         </div>
         <div className="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
-          <motion.div
-            className="max-w-3xl"
-            initial="initial"
-            animate="animate"
-            variants={stagger}
-          >
+          <motion.div className="max-w-3xl" initial="initial" animate="animate" variants={stagger}>
             <motion.div variants={fadeUp}>
               <Badge className="mb-5 py-1.5 px-4 text-sm font-semibold border border-primary/40 bg-primary/15 text-primary backdrop-blur-sm rounded-full">
                 About ICRA
@@ -114,17 +114,15 @@ export default function AboutPage() {
             >
               Restoring Africa's Climate, One Community at a Time
             </motion.h1>
-            <motion.p
-              variants={fadeUp}
-              className="text-lg md:text-xl text-white/75 leading-relaxed max-w-2xl"
-            >
-              ICRA is Africa's premier hub for climate restoration, combining cutting-edge science with community-driven action to heal degraded landscapes and build resilient futures.
+            <motion.p variants={fadeUp} className="text-lg md:text-xl text-white/75 leading-relaxed max-w-2xl">
+              ICRA is Africa's premier hub for climate restoration, combining cutting-edge science with
+              community-driven action to heal degraded landscapes and build resilient futures.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* ── Mission & Vision ── */}
+      {/* ── Mission & Vision ─────────────────────────────────────── */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
@@ -135,10 +133,15 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-background/98" />
         </div>
         <div className="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            variants={stagger}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
             {/* Mission */}
-            <motion.div {...fadeUp} className="relative overflow-hidden rounded-3xl group">
+            <motion.div variants={fadeUp} className="relative overflow-hidden rounded-3xl group">
               <div className="absolute inset-0 z-0">
                 <img
                   src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=70&w=1200"
@@ -152,13 +155,14 @@ export default function AboutPage() {
                 </div>
                 <h2 className="text-2xl font-bold mb-4 font-serif text-foreground">Our Mission</h2>
                 <p className="text-foreground leading-relaxed">
-                  To empower African communities with scientific knowledge and tools to restore their ecosystems, combat climate change, and build sustainable livelihoods.
+                  To empower African communities with scientific knowledge and tools to restore their
+                  ecosystems, combat climate change, and build sustainable livelihoods.
                 </p>
               </div>
             </motion.div>
 
             {/* Vision */}
-            <motion.div {...fadeUp} className="relative overflow-hidden rounded-3xl group">
+            <motion.div variants={fadeUp} className="relative overflow-hidden rounded-3xl group">
               <div className="absolute inset-0 z-0">
                 <img
                   src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&q=70&w=1200"
@@ -172,15 +176,16 @@ export default function AboutPage() {
                 </div>
                 <h2 className="text-2xl font-bold mb-4 font-serif">Our Vision</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  A thriving African continent where restored ecosystems support resilient communities and sustainable development.
+                  A thriving African continent where restored ecosystems support resilient communities
+                  and sustainable development.
                 </p>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* ── Model & Approach ── */}
+      {/* ── Model & Approach ─────────────────────────────────────── */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
@@ -191,28 +196,29 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-card/95" />
         </div>
         <div className="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+
+            {/* Text + pillars */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
+              className="flex flex-col justify-center"
             >
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">Our Approach</p>
-              <h2 className="text-4xl font-bold mb-7 font-serif">Community-Led Implementation</h2>
+              <h2 className="text-4xl font-bold mb-5 font-serif">Community-Led Implementation</h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 Our model is built on four pillars that create a self-sustaining cycle. We
                 don't just plant trees — we build systems that ensure they survive, thrive,
                 and generate lasting community benefit.
               </p>
               <div className="space-y-3">
-                {[
-                  { n: 1, title: 'Scientific Validation', desc: 'Rigorous testing of restoration techniques across diverse African climates.' },
-                  { n: 2, title: 'Citizen Science Network', desc: "Training thousands of local 'Restoration Leads' to gather data and implement practices." },
-                  { n: 3, title: 'Policy Advocacy', desc: 'Translating ground-level success into national and regional policy changes.' },
-                  { n: 4, title: 'Sustainable Financing', desc: 'Connecting local projects with global climate finance through transparent monitoring.' },
-                ].map(({ n, title, desc }) => (
-                  <div key={n} className="flex gap-4 p-5 rounded-2xl hover:bg-background/70 transition-colors border border-transparent hover:border-border/60 group">
+                {pillars.map(({ n, title, desc }) => (
+                  <div
+                    key={n}
+                    className="flex gap-4 p-5 rounded-2xl hover:bg-background/70 transition-colors border border-transparent hover:border-border/60 group"
+                  >
                     <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-sm group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-200">
                       {n}
                     </div>
@@ -225,6 +231,7 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
+            {/* Image — stretches to match pillar list height */}
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -232,14 +239,9 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-4 border-border/60">
-                <img
-                  src="images/topafrica.jpg"
-                  alt="Restoration Team"
-                  className="w-full h-full object-cover"
-                />
+              <div className="rounded-[3rem] overflow-hidden shadow-2xl border-4 border-border/60 h-full min-h-[520px]">
+                <img src="images/topafrica.jpg" alt="Restoration Team" className="w-full h-full object-cover" />
               </div>
-              {/* Decorative corner label */}
               <div className="absolute -top-4 -right-4 w-20 h-20 rounded-2xl bg-primary flex items-center justify-center shadow-xl shadow-primary/30">
                 <div className="text-center text-primary-foreground">
                   <div className="text-xl font-extrabold leading-none">4</div>
@@ -251,7 +253,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Core Values ── */}
+      {/* ── Core Values ──────────────────────────────────────────── */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
@@ -259,15 +261,16 @@ export default function AboutPage() {
             alt=""
             className="w-full h-full object-cover opacity-[0.06]"
           />
-          <div className="absolute inset-0 bg-background/97" />
+          <div className="absolute inset-0 bg-background/85" />
         </div>
         <div className="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
           <div className="text-center max-w-xl mx-auto mb-14">
             <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary mb-3">Our DNA</p>
             <h2 className="text-4xl font-bold mb-4 font-serif">Core Values</h2>
-            <p className="text-muted-foreground">These principles guide every project, partnership, and community initiative we lead.</p>
+            <p className="text-muted-foreground">
+              These principles guide every project, partnership, and community initiative we lead.
+            </p>
           </div>
-
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
             variants={stagger}
@@ -278,7 +281,6 @@ export default function AboutPage() {
             {coreValues.map((v, i) => (
               <motion.div key={i} variants={fadeUp}>
                 <Card className="h-full group hover:shadow-xl transition-all duration-500 border rounded-3xl overflow-hidden relative">
-                  {/* Subtle bg image per card */}
                   <div className="absolute inset-0 z-0">
                     <img
                       src={v.bg}
@@ -300,7 +302,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Leadership ── */}
+      {/* ── Founder Leadership ───────────────────────────────────── */}
       <section className="relative py-28 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
@@ -311,7 +313,8 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-card/96" />
         </div>
         <div className="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
             {/* Photo */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -344,7 +347,6 @@ export default function AboutPage() {
             >
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">Our Leadership</p>
               <h2 className="text-4xl font-bold mb-6 font-serif text-foreground">Visionary Leadership</h2>
-              {/* Pull quote */}
               <div className="relative pl-6 mb-7 border-l-4 border-primary/40">
                 <Quote className="absolute -top-1 -left-2 w-5 h-5 text-primary/40" />
                 <p className="text-xl text-foreground font-serif italic leading-relaxed">
@@ -354,13 +356,18 @@ export default function AboutPage() {
               </div>
               <div className="space-y-4 text-foreground leading-relaxed text-sm">
                 <p>
-                  Dr. Stella Wanjala is a leading expert in climate change, environmental conservation, gender, and community development, with over 15 years of experience at the intersection of ecosystems, livelihoods, and community well-being. As Founder & Lead Researcher of ICRA, she champions the integration of science, communities, and climate action across Africa.
+                  Dr. Stella Wanjala is a leading expert in climate change, environmental conservation,
+                  gender, and community development, with over 15 years of experience at the intersection
+                  of ecosystems, livelihoods, and community well-being. As Founder & Lead Researcher of
+                  ICRA, she champions the integration of science, communities, and climate action across Africa.
                 </p>
                 <p>
-                  A pioneer in women-led natural resource management, Dr. Wanjala leads the world's first women-led water fund and advances gender-transformative climate solutions aligned with SDGs 5, 13, and 16. Her work seamlessly integrates biodiversity conservation, citizen science, and policy engagement to deliver measurable impact through research, advocacy, and capacity building.
+                  A pioneer in women-led natural resource management, Dr. Wanjala leads the world's first
+                  women-led water fund and advances gender-transformative climate solutions aligned with
+                  SDGs 5, 13, and 16.
                 </p>
               </div>
-              <div className="flex gap-8 pt-8">
+              <div className="flex gap-8 pt-8 border-t border-border/40 mt-8">
                 {[
                   { val: '15+', lab: 'Years Exp.' },
                   { val: 'AWARD', lab: 'Fellow' },
@@ -373,23 +380,56 @@ export default function AboutPage() {
                   </div>
                 ))}
               </div>
-              <div className="pt-6">
-                <Link to="/team">
-                  <Button
-                    variant="outline"
-                    className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground transition"
-                  >
-                    Meet the Full Team
-                  </Button>
-                </Link>
-              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
+      {/* ── Full Team Grid ───────────────────────────────────────── */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-background/98" />
+        <div className="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+          <div className="text-center max-w-xl mx-auto mb-14">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">The People</p>
+            <h2 className="text-4xl font-bold mb-4 font-serif">Meet the Team</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Scientists, field practitioners, and community leaders united by a common mission
+              to restore Africa's ecosystems.
+            </p>
+          </div>
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            variants={stagger}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
+            {teamMembers.map((member, i) => (
+              <motion.div key={i} variants={fadeUp}>
+                <div className="group relative rounded-2xl overflow-hidden border border-border/60 hover:shadow-xl hover:border-primary/30 transition-all duration-500">
+                  {/* Photo */}
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                  </div>
+                  {/* Info */}
+                  <div className="p-5 -mt-2 relative">
+                    <h4 className="font-bold text-base mb-0.5">{member.name}</h4>
+                    <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-2">{member.role}</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{member.desc}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
-      {/* ── CTA ── */}
+      {/* ── CTA ──────────────────────────────────────────────────── */}
       <section className="relative py-28 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
@@ -398,7 +438,6 @@ export default function AboutPage() {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-primary/88" />
-          {/* Subtle cross-hatch overlay */}
           <div className="absolute inset-0 opacity-[0.06]" style={{
             backgroundImage: 'repeating-linear-gradient(45deg, #fff 0px, #fff 1px, transparent 1px, transparent 8px)',
           }} />
@@ -417,7 +456,9 @@ export default function AboutPage() {
               className="rounded-full px-10 h-13 text-base font-semibold bg-white text-primary hover:bg-white/92 shadow-xl shadow-black/20"
               asChild
             >
-              <Link to="/contact">Get in Touch</Link>
+              <Link to="/contact">
+                Get in Touch <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
             </Button>
           </div>
         </Container>

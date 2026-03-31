@@ -38,7 +38,7 @@ const teamMembers = [
     name: 'Mr. Benard Omuya',
     role: 'Head of Citizen Science',
     tag: 'Research',
-    bio: 'Benard designs and manages ICRA\'s participatory research programs, training community members as frontline data collectors. His work ensures that research is not conducted on communities, but by and with them — bridging lived experience with scientific rigor.',
+    bio: 'Benard is a senior water resources governance and climate resilience expert with over 35 years of leadership experience in Kenya’s public sector. At ICRA, he provides strategic and technical guidance on integrated water resources management, climate adaptation, and institutional strengthening. He brings deep expertise in catchment-based planning, policy, and community-led water governance, with a proven track record in delivering large-scale, multi-stakeholder programmes that advance sustainable and resilient water systems across Africa.',
     expertise: ['Participatory Research', 'Data Collection', 'Training & Capacity', 'West Africa'],
   },
   {
@@ -58,11 +58,11 @@ const teamMembers = [
     expertise: ['Watershed Management', 'Blue Carbon', 'Food Security', 'North & East Africa'],
   },
   {
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=600',
+    image: 'images/william-tolbert.jpg',
     name: 'William Tolbert',
     role: 'Community Partnerships Manager',
     tag: 'Partnerships',
-    bio: 'William cultivates and manages ICRA\'s growing network of community organizations, NGOs, and local government partners. His relationship-first approach has been instrumental in establishing ICRA\'s presence across 18 African countries.',
+    bio: 'William serves as a technical lead and advisor at ICRA, combining over 15 years of experience in community development, civic engagement, and participatory programming. He cultivates and manages ICRA’s growing network of community organizations, NGOs, and local government partners, using a relationship-driven approach that has been instrumental in expanding ICRA’s presence across 18 African countries. His expertise spans inclusive facilitation, MEL, advocacy, and capacity building, with a strong focus on equity and community-led solutions.',
     expertise: ['Partnership Development', 'NGO Relations', 'Community Engagement', 'East Africa'],
   },
   {

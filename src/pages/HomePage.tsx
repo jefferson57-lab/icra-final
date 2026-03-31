@@ -50,19 +50,19 @@ const priorityAreas = [
     title: 'Sustainable Agriculture',
     description: 'Regenerative farming techniques that restore soil health and increase yields for African smallholder farmers.',
     icon: <Sprout className="w-6 h-6" />,
-    image: '/images/image_6.jpg',
+    image: '/images/action1.jpg',
   },
   {
     title: 'Reforestation & Biodiversity',
     description: 'Scientific approaches to restoring native forests and protecting unique African wildlife corridors.',
     icon: <Leaf className="w-6 h-6" />,
-    image: '/images/image_1.jpg',
+    image: '/images/community1.jpg',
   },
   {
     title: 'Water Resource Management',
     description: 'Innovative water harvesting and conservation methods to combat drought and ensure community resilience.',
     icon: <Droplets className="w-6 h-6" />,
-    image: '/images/image_5.jpg',
+    image: '/images/community2.jpg',
   },
 ]
 

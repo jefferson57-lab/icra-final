@@ -116,19 +116,19 @@ export function Navbar({ appName = 'Institute of Climate Restoration for Africa'
             >
               {/* Logo image with SVG fallback */}
               <div className="relative flex-shrink-0">
-                {!logoError ? (
-                  <img
-                    src="/images/logo_icra.png"
-                    alt="ICRA Logo"
-                    className="h-16 w-16 object-contain rounded-xl transition-transform duration-300 group-hover:scale-105"
-                    onError={() => setLogoError(true)}
-                  />
-                ) : (
-                  <div className="h-16 w-16 rounded-xl bg-primary text-primary-foreground flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                    <ICRAEmblem className="w-10 h-10 text-primary-foreground" />
-                  </div>
-                )}
-              </div>
+  {!logoError ? (
+    <img
+      src="/images/logo_icra.png"
+      alt="ICRA Logo"
+      className="h-24 w-24 object-contain rounded-xl transition-transform duration-300 group-hover:scale-105"
+      onError={() => setLogoError(true)}
+    />
+  ) : (
+    <div className="h-24 w-24 rounded-xl bg-primary text-primary-foreground flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+      <ICRAEmblem className="w-14 h-14 text-primary-foreground" />
+    </div>
+  )}
+</div>
 
               {/* Text brand – larger on all screens */}
               <div className="flex flex-col leading-none">
