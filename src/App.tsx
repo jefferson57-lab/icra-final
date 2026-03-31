@@ -1,6 +1,7 @@
 import { createRootRoute, createRoute, Outlet, RouterProvider, createRouter } from '@tanstack/react-router'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
+import ScrollToTop from './components/ScrollToTop'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import RestorationPage from './pages/RestorationPage'
@@ -11,6 +12,7 @@ import TeamPage from './pages/TeamPage'
 const rootRoute = createRootRoute({
   component: () => (
     <div className="w-full min-h-screen flex flex-col overflow-x-hidden">
+      <ScrollToTop />
       <Navbar />
       <main className="flex-1 flex flex-col w-full">
         <Outlet />

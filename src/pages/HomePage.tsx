@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ArrowRight, Leaf, Droplets, Sprout, BarChart3, TreePine, Users2 } from 'lucide-react'
+import { useNavigate } from '@tanstack/react-router'
 
 // ── Animation hook (replaces framer-motion) ──────────────────────────────────
 function useFadeIn(delay = 0) {
@@ -68,9 +69,9 @@ const priorityAreas = [
 
 const stats = [
   { value: '2.5M+', label: 'Trees Planted',       icon: <TreePine className="w-4 h-4" /> },
-  { value: '18',    label: 'African Countries',    icon: <Leaf     className="w-4 h-4" /> },
-  { value: '50k+',  label: 'Community Members',    icon: <Users2   className="w-4 h-4" /> },
-  { value: '15yr+', label: 'Restoration Impact',   icon: <BarChart3 className="w-4 h-4" /> },
+  { value: '20+',    label: 'Climate Experts',    icon: <Leaf     className="w-4 h-4" /> },
+  { value: '1500+',  label: 'Community Members',    icon: <Users2   className="w-4 h-4" /> },
+  { value: '10yr+', label: 'Restoration Impact',   icon: <BarChart3 className="w-4 h-4" /> },
 ]
 
 const partners = [
@@ -102,7 +103,7 @@ const PrimaryBtn = ({ children, onClick, white = false, outline = false }) => (
 )
 
 // ── Main component ────────────────────────────────────────────────────────────
-export default function HomePage({ onNavigate }) {
+export default function HomePage() {
   // hero fade-in
   const h1 = useFadeIn(100)
   const h2 = useFadeIn(250)
@@ -110,7 +111,13 @@ export default function HomePage({ onNavigate }) {
   const h4 = useFadeIn(600)
   const h5 = useFadeIn(800)
 
-  const nav = (page) => onNavigate?.(page)
+  const navigate = useNavigate()
+
+  const nav = (page) => {
+    if (page === 'work') navigate({ to: '/restoration' })
+    else if (page === 'about') navigate({ to: '/about' })
+    else if (page === 'contact') navigate({ to: '/contact' })
+  }
 
   return (
     <div className="flex flex-col font-sans">
