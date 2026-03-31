@@ -212,30 +212,7 @@ export default function HomePage({ onNavigate }) {
                 grounded in local realities. We lead on-the-ground climate programs while advancing
                 water security, ecosystem restoration, and community well-being across the continent.
               </p>
-
-              {/* Mobile stats */}
-              <div className="grid grid-cols-2 gap-4 lg:hidden mb-8">
-                {stats.map((s) => (
-                  <div key={s.label} className="p-4 rounded-2xl bg-[#52B788]/5 border border-[#52B788]/15">
-                    <div className="text-2xl font-bold text-white">{s.value}</div>
-                    <div className="text-xs text-white uppercase tracking-wider mt-0.5">{s.label}</div>
-                  </div>
-                ))}
-              </div>
-
-              <PrimaryBtn onClick={() => nav('work')}>
-                See Our Approach <ArrowRight className="w-4 h-4" />
-              </PrimaryBtn>
-            </FadeUp>
-
-            <FadeUp delay={150} className="relative">
-              <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-                <img
-                  src="/images/image_2.jpg"
-                  alt="Restoration Work"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              
               {/* Floating quote card */}
               <div className="absolute -bottom-6 -left-6 bg-white border border-slate-200 p-6 rounded-2xl shadow-2xl max-w-[220px]">
                 <BarChart3 className="w-7 h-7 text-[#52B788] mb-3" />
