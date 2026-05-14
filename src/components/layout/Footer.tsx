@@ -27,7 +27,7 @@ export function Footer() {
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/restoration', label: 'Our Work' },
-    { path: '/contact', label: 'Contact' },
+    { path: '/partner', label: 'Partner With Us' },
   ]
 
   const socialLinks = [
@@ -38,109 +38,94 @@ export function Footer() {
   ]
 
   return (
-    <footer className="relative border-t border-border bg-background/95 backdrop-blur-xl">
-      <Container className="py-16">
-
-        {/* ── TOP GRID ── */}
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-
-          {/* ── BRAND ── */}
-          <div className="space-y-5">
+    <footer className="bg-stone-950 text-white">
+      <Container className="py-20">
+        <div className="grid gap-12 lg:grid-cols-4">
+          <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="h-12 w-12 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center shadow-sm">
-                <img
-                  src="/images/logo_icra.png"
-                  alt="ICRA Logo"
-                  className="h-full w-full object-contain p-1"
-                  onError={(e) => (e.currentTarget.style.display = 'none')}
-                />
-                <ICRAEmblem className="w-8 h-8 text-primary absolute" />
+              <div className="w-12 h-12 rounded-2xl bg-brand-500 flex items-center justify-center">
+                <span className="text-sm font-display font-bold">IC</span>
               </div>
-
-              <div className="leading-tight">
-                <p className="text-sm font-semibold">
-                  Institute of Climate Restoration
-                </p>
-                <p className="text-xs uppercase tracking-[0.2em] text-primary">
-                  for Africa
-                </p>
+              <div>
+                <p className="font-display text-lg font-semibold">ICRA</p>
+                <p className="text-xs uppercase tracking-[0.28em] text-earth-300">Institute of Climate Restoration</p>
               </div>
             </div>
-
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Advancing climate restoration across Africa through research,
-              innovation, and community-driven solutions.
+            <p className="text-sm text-stone-400 leading-relaxed">
+              Restoring Africa’s climate through science, community action, and strategic partnerships.
+              Active in 18 countries across the continent.
             </p>
           </div>
 
-          {/* ── QUICK LINKS ── */}
           <div>
-            <h4 className="text-sm font-semibold mb-4">Quick Links</h4>
-            <div className="space-y-3">
+            <p className="text-xs uppercase tracking-[0.28em] text-stone-500 mb-5">Explore</p>
+            <ul className="space-y-3 text-sm text-stone-300">
               {quickLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className="block text-sm text-muted-foreground hover:text-primary transition"
-                >
-                  {link.label}
-                </Link>
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
               ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-xs uppercase tracking-[0.28em] text-stone-500 mb-5">Contact</p>
+            <div className="space-y-4 text-sm text-stone-300">
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-earth-300 mt-0.5" />
+                <div>
+                  <p className="font-semibold text-white">Nairobi, Kenya</p>
+                  <p className="text-stone-400">ICAD Centre — climate restoration hub</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <Phone className="w-4 h-4 text-earth-300 mt-0.5" />
+                <div>
+                  <p className="font-semibold text-white">+254 (0) 725 216 292</p>
+                  <p className="text-stone-400">Mon–Fri, 9am–5pm EAT</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <Mail className="w-4 h-4 text-earth-300 mt-0.5" />
+                <div>
+                  <p className="font-semibold text-white">climaterestorationafrica@gmail.com</p>
+                  <p className="text-stone-400">Partnership inquiries</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* ── CONTACT ── */}
           <div>
-            <h4 className="text-sm font-semibold mb-4">Contact</h4>
-            <div className="space-y-3 text-sm text-muted-foreground">
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 mt-0.5" />
-                <span>Nairobi, Kenya</span>
-              </div>
-
-              <div className="flex items-start gap-2">
-                <Phone className="w-4 h-4 mt-0.5" />
-                <span>+254 725 216 292</span>
-              </div>
-
-              <div className="flex items-start gap-2">
-                <Mail className="w-4 h-4 mt-0.5" />
-                <span>climaterestorationafrica@gmail.com</span>
-              </div>
-
-              <p className="text-xs">Mon–Fri, 9am–5pm (EAT)</p>
-            </div>
-          </div>
-
-          {/* ── SOCIAL ── */}
-          <div>
-            <h4 className="text-sm font-semibold mb-4">Connect</h4>
-            <div className="flex flex-wrap gap-3">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="px-4 py-2 text-sm rounded-full border border-border hover:bg-muted transition"
-                >
-                  {link.label}
+            <p className="text-xs uppercase tracking-[0.28em] text-stone-500 mb-5">Legal & Trust</p>
+            <ul className="space-y-3 text-sm text-stone-300">
+              <li>Registered NGO · Kenya</li>
+              <li>Reg. No: <span className="text-white font-medium">[INSERT REG NUMBER]</span></li>
+              <li>
+                <a href="/annual-report.pdf" className="underline underline-offset-2 hover:text-white transition-colors">
+                  Annual Report 2024
                 </a>
-              ))}
-            </div>
+              </li>
+              <li>
+                <a href="/financials.pdf" className="underline underline-offset-2 hover:text-white transition-colors">
+                  Audited Accounts
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* ── DIVIDER ── */}
-        <div className="my-10 border-t border-border" />
-
-        {/* ── BOTTOM ── */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p>
-            © {currentYear} Institute of Climate Restoration for Africa. All rights reserved.
-          </p>
-
-          <div className="flex gap-6">
-            <Link to="/" className="hover:text-primary transition">Privacy</Link>
-            <Link to="/" className="hover:text-primary transition">Terms</Link>
+        <div className="mt-16 border-t border-stone-800 pt-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 text-sm text-stone-400">
+          <div className="space-y-2">
+            <p>© {currentYear} ICRA. All rights reserved.</p>
+          </div>
+          <div className="flex flex-wrap gap-6">
+            <Link to="/" className="hover:text-white transition-colors">Privacy</Link>
+            <Link to="/" className="hover:text-white transition-colors">Terms</Link>
           </div>
         </div>
       </Container>

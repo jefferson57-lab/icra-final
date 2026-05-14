@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useRouterState } from '@tanstack/react-router'
-import { Button } from '@blinkdotnew/ui'
-import { Moon, Sun, Menu, X } from 'lucide-react'
+import { Moon, Sun, Menu, X, ArrowRight } from 'lucide-react'
 
 // ── ICRA SVG Emblem ─────────────────────────────────────────────────────────
 function ICRAEmblem({ className = 'w-10 h-10' }) {
@@ -31,7 +30,6 @@ function ICRAEmblem({ className = 'w-10 h-10' }) {
 
 export function Navbar() {
   const [isDarkMode, setIsDarkMode] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [logoError, setLogoError] = useState(false)
 
@@ -64,132 +62,134 @@ export function Navbar() {
     setIsDarkMode(dark)
   }
 
-  // Scroll effect
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false)
+  }, [currentPath])
+
+  // Update page title based on route
+  useEffect(() => {
+    const titles: Record<string, string> = {
+      '/': 'ICRA | Climate Restoration Across Africa',
+      '/about': 'About ICRA | Pan-African Climate Restoration',
+      '/partner': 'Partner With Us | ICRA',
+      '/restoration': 'Our Research | ICRA',
+      '/team': 'Our Team | ICRA',
+      '/contact': 'Partner With Us | ICRA',
+    }
+
+    const matchedPath = Object.keys(titles).find((path) =>
+      path === '/' ? currentPath === '/' : currentPath.startsWith(path)
+    )
+
+    document.title = titles[matchedPath || '/'] || 'ICRA | Climate Restoration Across Africa'
   }, [currentPath])
 
   const navItems = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/restoration', label: 'Our Work' },
-    { path: '/contact', label: 'Contact' },
+    { path: '/team', label: 'Team' },
   ]
 
-  const isActive = (path) =>
-    path === '/' ? currentPath === '/' : currentPath.startsWith(path)
+  const isActive = (path) => (path === '/' ? currentPath === '/' : currentPath.startsWith(path))
 
-  const navBg = scrolled
-    ? 'bg-background/95 backdrop-blur-xl border-b border-border shadow-sm'
-    : 'bg-transparent'
+  const navBgClass = 'bg-stone-50 dark:bg-stone-950 border-b border-stone-200/70 dark:border-stone-800/70 shadow-soft'
 
   return (
     <>
-      <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${navBg}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
-          <div className="flex items-center justify-between h-[76px]">
+      <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${navBgClass}`} id="main-nav">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 h-[76px] flex items-center justify-between">
+          {/* ── LOGO + BRAND ── */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110">
+              <span className="text-white font-display font-bold text-sm">IC</span>
+            </div>
+            <span className="font-display font-bold text-xl tracking-tight text-stone-900 group-hover:text-brand-600 transition-colors hidden sm:inline">
+              ICRA
+            </span>
+          </Link>
 
-            {/* ── LOGO + BRAND ── */}
-            <Link to="/" className="flex items-center gap-4 group">
-              <div className="flex items-center justify-center h-14 w-14 md:h-16 md:w-16 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm">
-                {!logoError ? (
-                  <img
-                    src="/images/logo_icra.png"
-                    alt="ICRA Logo"
-                    className="h-full w-full object-contain p-1 transition-transform group-hover:scale-105"
-                    onError={() => setLogoError(true)}
+          {/* ── DESKTOP NAV ── */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => {
+              const active = isActive(item.path)
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`text-sm font-medium transition-colors relative group ${
+                    active
+                      ? 'text-brand-600 font-semibold'
+                      : 'text-stone-600 hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-50'
+                  }`}
+                >
+                  {item.label}
+                  <span
+                    className={`absolute -bottom-0.5 left-0 h-px bg-brand-500 transition-all duration-300 ${
+                      active ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
                   />
-                ) : (
-                  <ICRAEmblem className="w-10 h-10 text-primary" />
-                )}
-              </div>
+                </Link>
+              )
+            })}
+          </nav>
 
-              <div className="flex flex-col leading-tight max-w-[260px]">
-                <span className="text-sm md:text-base font-semibold text-foreground leading-snug">
-                  Institute of Climate Restoration
-                </span>
-                <span className="text-xs md:text-sm uppercase tracking-[0.2em] text-primary font-medium">
-                  for Africa
-                </span>
-              </div>
+          {/* ── RIGHT SECTION ── */}
+          <div className="flex items-center gap-4">
+            {/* Theme toggle */}
+            <button
+              onClick={toggleDark}
+              className="p-2 rounded-lg border border-stone-200 hover:bg-stone-100 transition-colors hidden sm:block"
+              aria-label="Toggle dark mode"
+            >
+              {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
+
+            {/* CTA Button — Partner With Us */}
+            <Link
+              to="/partner"
+              className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-500 text-white font-semibold text-sm hover:bg-brand-600 transition-all duration-200 shadow-soft hover:shadow-card hover:-translate-y-px group"
+            >
+              Partner With Us
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </Link>
 
-            {/* ── DESKTOP NAV ── */}
-            <div className="hidden md:flex items-center space-x-8">
-              {navItems.map((item) => {
-                const active = isActive(item.path)
-                return (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`relative text-sm font-medium transition ${
-                      active
-                        ? 'text-primary'
-                        : isDarkMode
-                        ? 'text-slate-300 hover:text-white'
-                        : 'text-slate-700 hover:text-primary'
-                    }`}
-                  >
-                    {item.label}
-                    {active && (
-                      <span className="absolute left-1/2 -translate-x-1/2 bottom-[-6px] w-1.5 h-1.5 bg-primary rounded-full" />
-                    )}
-                  </Link>
-                )
-              })}
-
-              {/* Theme toggle */}
-              <button
-                onClick={toggleDark}
-                className="p-2 rounded-lg border transition"
-              >
-                {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
-
-              {/* CTA */}
-              <Button className="h-10 px-6 rounded-full font-semibold shadow-md" asChild>
-                <Link to="/contact">Get Involved</Link>
-              </Button>
-            </div>
-
-            {/* ── MOBILE ── */}
-            <div className="md:hidden flex items-center gap-2">
-              <button onClick={toggleDark} className="p-2">
-                {isDarkMode ? <Sun /> : <Moon />}
-              </button>
-
-              <button onClick={() => setMobileOpen(!mobileOpen)} className="p-2">
-                {mobileOpen ? <X /> : <Menu />}
-              </button>
-            </div>
+            {/* Mobile menu toggle */}
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="md:hidden p-2"
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X /> : <Menu />}
+            </button>
           </div>
         </div>
       </header>
 
       {/* ── MOBILE MENU ── */}
       {mobileOpen && (
-        <div className="md:hidden bg-background border-t px-6 py-6 space-y-4">
+        <div className="md:hidden bg-stone-50 border-t border-stone-200 px-6 py-6 space-y-4 mt-[76px]">
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
-              className="block text-base"
+              className="block text-base font-medium text-stone-900 hover:text-brand-600 transition-colors"
             >
               {item.label}
             </Link>
           ))}
+          <Link
+            to="/partner"
+            className="block mt-6 px-5 py-2.5 rounded-xl bg-brand-500 text-white font-semibold text-sm text-center hover:bg-brand-600 transition-colors"
+          >
+            Partner With Us
+          </Link>
         </div>
       )}
 
       {/* Spacer */}
-      <div className="h-[76px]" />
+      <div className="h-18" />
     </>
   )
 }

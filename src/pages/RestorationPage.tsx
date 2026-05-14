@@ -109,12 +109,12 @@ export default function RestorationPage() {
       <section className="relative py-28 md:py-40 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="images/gradient.jpg"
-            alt="African landscape"
-            className="w-full h-full object-cover"
+            src="https://images.unsplash.com/photo-1777287514552-fda9d967cbb4?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="African farmers and community members gathered in a green field — local program participants"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/92 via-slate-950/68 to-slate-900/20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-stone-900/72 via-stone-900/40 to-stone-900/5" />
+          <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-stone-900/50 to-transparent" />
         </div>
         <Container className="relative z-10">
           <motion.div
@@ -194,10 +194,10 @@ export default function RestorationPage() {
         {/* Programme cards grid */}
 <div
   className="relative bg-cover bg-center bg-no-repeat"
-  style={{ backgroundImage: "url('/images/gradient.jpg')" }}
+  style={{ backgroundImage: "url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1920&q=85')" }}
 >
   {/* Optional overlay for better readability */}
-  <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+  <div className="absolute inset-0 bg-stone-950/70" />
 
   <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-slate-950/30 to-transparent pointer-events-none z-10" />
 

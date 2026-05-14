@@ -69,22 +69,22 @@ const teamMembers = [
     bio: 'Benard is a senior water resources governance and climate resilience expert with over 35 years of leadership experience in Kenya’s public sector. At ICRA, he provides strategic and technical guidance on integrated water resources management, climate adaptation, and institutional strengthening. He brings deep expertise in catchment-based planning, policy, and community-led water governance, with a proven track record in delivering large-scale, multi-stakeholder programmes that advance sustainable and resilient water systems across Africa.',
     expertise: ['Participatory Research', 'Data Collection', 'Training & Capacity', 'West Africa'],
   },
-  {
-    image: 'images/jonesku.jpeg',
-    name: 'Mr. Jones Mutebi',
-    role: 'Climate Policy Advisor',
-    tag: 'Policy',
-    bio: 'Mr. Jones Mutebi bridges the gap between ground-level research and high-level policy, working directly with African governments to embed restoration science into national climate frameworks and pan-continental governance structures.',
-    expertise: ['Climate Policy', 'Government Relations', 'Pan-African Governance', 'Advocacy'],
-  },
-  {
-    image: 'images/joy-ashioya.jpg',
-    name: 'Joy Ashioya',
-    role: 'Water Security Lead',
-    tag: 'Research',
-    bio: 'Joy is a specialist in watershed management and blue carbon ecosystems. She drives ICRA\'s water security portfolio across 10 African countries, developing frameworks that link ecosystem health with community water access and food production.',
-    expertise: ['Watershed Management', 'Blue Carbon', 'Food Security', 'North & East Africa'],
-  },
+  // {
+  //   image: 'images/jonesku.jpeg',
+  //   name: 'Mr. Jones Mutebi',
+  //   role: 'Climate Policy Advisor',
+  //   tag: 'Policy',
+  //   bio: 'Mr. Jones Mutebi bridges the gap between ground-level research and high-level policy, working directly with African governments to embed restoration science into national climate frameworks and pan-continental governance structures.',
+  //   expertise: ['Climate Policy', 'Government Relations', 'Pan-African Governance', 'Advocacy'],
+  // },
+  // {
+  //   image: 'images/joy-ashioya.jpg',
+  //   name: 'Joy Ashioya',
+  //   role: 'Water Security Lead',
+  //   tag: 'Research',
+  //   bio: 'Joy is a specialist in watershed management and blue carbon ecosystems. She drives ICRA\'s water security portfolio across 10 African countries, developing frameworks that link ecosystem health with community water access and food production.',
+  //   expertise: ['Watershed Management', 'Blue Carbon', 'Food Security', 'North & East Africa'],
+  // },
   {
     image: 'images/william-tolbert.jpg',
     name: 'William Tolbert',
@@ -110,9 +110,13 @@ export default function AboutPage() {
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <section className="relative py-28 md:py-40 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src="images/about1.jpg" alt="African landscape" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/92 via-slate-950/72 to-slate-900/25" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-transparent to-transparent" />
+          <img
+            src="https://images.unsplash.com/photo-1586348943529-beaae6c28db9?auto=format&fit=crop&w=1920&q=85"
+            alt="African community members working together planting trees in a restoration project"
+            className="w-full h-full object-cover object-top"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-stone-900/70 via-stone-900/35 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 to-transparent" />
         </div>
         <div className="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
           <motion.div className="max-w-3xl" initial="initial" animate="animate" variants={stagger}>

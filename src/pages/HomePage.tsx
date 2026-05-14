@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { ArrowRight, Leaf, Droplets, Sprout, BarChart3, TreePine, Users2 } from 'lucide-react'
+import { ArrowRight, Leaf, Droplets, Sprout, BarChart3, TreePine, Users2, Globe, Award } from 'lucide-react'
 import { useNavigate } from '@tanstack/react-router'
+import { SectionHeading } from '../components/ui/SectionHeading'
 
 // ── Animation hook (replaces framer-motion) ──────────────────────────────────
 function useFadeIn(delay = 0) {
@@ -74,6 +75,13 @@ const stats = [
   { value: '10yr+', label: 'Restoration Impact',   icon: <BarChart3 className="w-4 h-4" /> },
 ]
 
+const impactStats = [
+  { value: '18', label: 'Countries active', icon: Globe },
+  { value: '50K+', label: 'Hectares restored', icon: Leaf },
+  { value: '120K+', label: 'Lives impacted', icon: Users2 },
+  { value: '94%', label: 'Project success rate', icon: Award },
+]
+
 const partners = [
   'The Nature Conservancy',
   'Masinde Muliro University',
@@ -83,19 +91,15 @@ const partners = [
 ]
 
 // ── Reusable primitives ───────────────────────────────────────────────────────
-const Overline = ({ children }) => (
-  <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#52B788] mb-3">{children}</p>
-)
-
 const PrimaryBtn = ({ children, onClick, white = false, outline = false }) => (
   <button
     onClick={onClick}
-    className={`w-full md:w-auto inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 hover:scale-[1.03] active:scale-[0.98] ${
+    className={`w-full md:w-auto inline-flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-base font-semibold transition-all duration-200 ${
       white
-        ? 'bg-white text-[#2D6A4F] hover:bg-white/92 shadow-xl shadow-black/20'
+        ? 'bg-white text-stone-900 hover:bg-stone-100 shadow-soft'
         : outline
-        ? 'border-2 border-white/35 text-white bg-white/8 backdrop-blur-sm hover:bg-white/18 hover:border-white/50'
-        : 'bg-[#52B788] text-white shadow-xl shadow-[#52B788]/30 hover:bg-[#2D6A4F]'
+        ? 'border border-white/25 text-white bg-white/10 backdrop-blur-sm hover:bg-white/15'
+        : 'bg-brand-500 text-white hover:bg-brand-600 shadow-soft hover:-translate-y-0.5'
     }`}
   >
     {children}
@@ -116,120 +120,154 @@ export default function HomePage() {
   const nav = (page) => {
     if (page === 'work') navigate({ to: '/restoration' })
     else if (page === 'about') navigate({ to: '/about' })
-    else if (page === 'contact') navigate({ to: '/contact' })
+    else if (page === 'contact') navigate({ to: '/partner' })
+    else if (page === 'partner') navigate({ to: '/partner' })
   }
 
   return (
     <div className="flex flex-col font-sans">
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        {/* Background */}
+      <section className="relative min-h-[95vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/image_3.jpg"
-            alt="African savanna landscape"
-            loading="lazy"
+            src="https://images.pexels.com/photos/16973544/pexels-photo-16973544.jpeg"
+            alt="Sweeping African savannah landscape at golden hour — vast open grassland under warm sky"
+            loading="eager"
             decoding="async"
-            className="w-full h-full object-cover"
+            fetchPriority="high"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/92 via-slate-950/65 to-slate-900/20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-slate-950/10" />
-          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#52B788]/10 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-stone-900/75 via-stone-900/40 to-stone-900/10" />
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: 'linear-gradient(to top, rgba(250,249,247,1), transparent)',
+              backgroundSize: '100% 35%',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'bottom',
+            }}
+          />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-24 w-full pt-32">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 py-24 w-full pt-32">
           <div className="max-w-3xl">
-            {/* Badge */}
             <div
               style={{ opacity: h1 ? 1 : 0, transform: h1 ? 'translateY(0)' : 'translateY(20px)', transition: 'all .6s ease' }}
-              className="mb-6"
+              className="mb-8 flex items-center gap-3"
             >
-              <span className="inline-flex items-center gap-2 py-1.5 px-4 text-sm font-semibold border border-[#52B788]/40 bg-[#52B788]/15 text-[#52B788] backdrop-blur-sm rounded-full">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#52B788] animate-pulse" />
-                Community-Led Climate Restoration
+              <div className="h-px w-10 bg-earth-400" />
+              <span className="text-xs uppercase tracking-[0.28em] text-orange-500 font-semibold font-body">
+                Pan-African climate restoration
               </span>
             </div>
 
-            {/* Heading */}
-            <div className="bg-black/45 backdrop-blur-sm rounded-2xl p-6" style={{ opacity: h2 ? 1 : 0, transform: h2 ? 'translateY(0)' : 'translateY(24px)', transition: 'all .65s ease' }}>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.06] tracking-tight mb-6">
-                Africa's Leading Platform for{' '}
-                <span className="text-[#52B788] italic" style={{ fontFamily: 'Georgia, serif' }}>Climate Restoration</span>
+            <div
+              style={{ opacity: h2 ? 1 : 0, transform: h2 ? 'translateY(0)' : 'translateY(24px)', transition: 'all .65s ease' }}
+              className="mb-8"
+            >
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight tracking-tight text-white">
+                Restoring <span className="text-orange-500">Africa’s</span> climate,<br />one community at a time
               </h1>
             </div>
 
-            {/* Body */}
-            <div className="bg-black/35 backdrop-blur-sm rounded-2xl p-6 mt-4" style={{ opacity: h3 ? 1 : 0, transform: h3 ? 'translateY(0)' : 'translateY(24px)', transition: 'all .65s ease' }}>
-              <p className="text-lg md:text-xl text-white/75 mb-10 leading-relaxed max-w-2xl">
-                ICRA is a continental implementation and knowledge platform that designs, tests, and
-                scales community-driven climate restoration solutions. We integrate implementation,
-                capacity building, policy engagement, and data systems into scalable programs
-                delivering measurable impact.
+            <div
+              style={{ opacity: h3 ? 1 : 0, transform: h3 ? 'translateY(0)' : 'translateY(24px)', transition: 'all .65s ease' }}
+              className="max-w-2xl"
+            >
+              <p className="text-base sm:text-lg md:text-xl text-white/80 leading-relaxed mb-10">
+                ICRA deploys science, citizen action, and strategic capital to restore degraded African ecosystems at scale. Your partnership directly funds measurable, lasting change across 18 countries.
               </p>
             </div>
 
-            {/* Buttons */}
             <div
               style={{ opacity: h4 ? 1 : 0, transform: h4 ? 'translateY(0)' : 'translateY(20px)', transition: 'all .6s ease' }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-col sm:flex-row gap-4"
             >
-              <PrimaryBtn onClick={() => nav('work')}>
-                Explore Our Work <ArrowRight className="w-4 h-4" />
-              </PrimaryBtn>
-              <PrimaryBtn outline onClick={() => nav('about')}>
-                Learn More
-              </PrimaryBtn>
+              <button
+                onClick={() => navigate({ to: '/partner' })}
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-brand-500 text-white font-bold text-base hover:bg-brand-600 transition-all duration-200 shadow-soft hover:-translate-y-0.5"
+              >
+                Become a Partner <ArrowRight className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => {
+                  const elem = document.getElementById('impact')
+                  elem?.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border border-white/25 text-white text-base font-semibold hover:bg-white/10 transition-all duration-200 backdrop-blur-sm"
+              >
+                See Our Impact
+              </button>
             </div>
           </div>
         </div>
 
-        {/* Floating stats panel */}
         <div
           style={{ opacity: h5 ? 1 : 0, transform: h5 ? 'translateY(0)' : 'translateY(20px)', transition: 'all .6s ease' }}
-          className="absolute bottom-10 right-6 lg:right-16 hidden lg:grid grid-cols-2 gap-px bg-white/10 border border-white/15 backdrop-blur-xl rounded-2xl overflow-hidden shadow-2xl"
+          className="absolute bottom-10 right-6 lg:right-16 hidden lg:grid grid-cols-2 gap-px bg-white/10 border border-white/15 backdrop-blur-xl rounded-3xl overflow-hidden shadow-soft"
         >
           {stats.map((s) => (
-            <div key={s.label} className="px-7 py-4 bg-slate-950/55 hover:bg-slate-950/70 transition-colors">
-              <div className="flex items-center gap-1.5 mb-1 text-[#52B788]/70">{s.icon}</div>
+            <div key={s.label} className="px-7 py-4 bg-stone-950/75 hover:bg-stone-950/90 transition-colors">
+              <div className="flex items-center gap-1.5 mb-1 text-earth-300/80">{s.icon}</div>
               <div className="text-2xl font-extrabold text-white">{s.value}</div>
               <div className="text-[10px] font-semibold text-white uppercase tracking-wider mt-0.5">{s.label}</div>
             </div>
           ))}
         </div>
+      </section>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-1.5">
-          <span className="text-[10px] uppercase tracking-[0.2em] text-white/30 font-medium">Scroll</span>
-          <div className="w-px h-8 bg-gradient-to-b from-white/30 to-transparent" />
+      {/* ── IMPACT STATS ──────────────────────────────────────────────────── */}
+      <section id="impact" className="py-20 bg-stone-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10">
+          <div className="flex flex-col items-center justify-center gap-3 mb-12">
+            <div className="h-px w-10 bg-earth-400" />
+            <span className="text-xs uppercase tracking-[0.28em] text-earth-400 font-semibold font-body">
+              Our Impact
+            </span>
+            <div className="h-px w-10 bg-earth-400" />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+            {impactStats.map((stat, i) => {
+              const Icon = stat.icon
+              return (
+                <FadeUp key={i} delay={i * 80}>
+                  <div className="relative flex flex-col items-center text-center p-8 rounded-[28px] bg-white border border-stone-200 shadow-soft hover:shadow-card transition-shadow duration-300">
+                    <div className="absolute top-0 right-0 w-16 h-16 bg-brand-50 rounded-bl-[28px] opacity-80" />
+                    <Icon className="w-6 h-6 text-brand-500 mb-4 relative" />
+                    <div className="font-display text-4xl font-bold text-brand-600 mb-2 relative">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm font-medium text-stone-500 relative">{stat.label}</div>
+                  </div>
+                </FadeUp>
+              )
+            })}
+          </div>
         </div>
       </section>
 
       {/* ── MISSION ──────────────────────────────────────────────────────── */}
       <section className="relative py-24 overflow-hidden bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16 items-center">
             <FadeUp>
-              <Overline>What We Do</Overline>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight" style={{ fontFamily: 'Georgia, serif' }}>
-                Bridging Science,{' '}
-                <span className="text-[#52B788]">Communities & Action</span>
-              </h2>
-              <p className="text-sm md:text-base text-slate-500 mb-10 leading-relaxed">
-                As a Practo-Academia Platform, ICRA connects communities, governments, research
-                institutions, and development partners to co-create and implement climate solutions
-                grounded in local realities. We lead on-the-ground climate programs while advancing
-                water security, ecosystem restoration, and community well-being across the continent.
+              <SectionHeading
+                eyebrow="What We Do"
+                title="Bridging science, communities and action"
+                subtitle="ICRA connects governments, research institutions, and local communities to design and implement restoration solutions grounded in African realities."
+              />
+              <p className="font-body text-base text-stone-600 leading-relaxed mb-8">
+                Our continental platform blends field implementation, policy engagement, research and data systems to deliver restoration at scale. Every project is co-designed to deliver climate and livelihoods impact.
               </p>
-
-              {/* Mobile stats */}
               <PrimaryBtn onClick={() => nav('work')}>
                 See Our Approach <ArrowRight className="w-4 h-4" />
               </PrimaryBtn>
             </FadeUp>
 
             <FadeUp delay={150} className="relative">
-              <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+              <div className="aspect-[4/5] rounded-[36px] overflow-hidden shadow-card">
                 <img
                   src="/images/image_2.jpg"
                   alt="Restoration Work"
@@ -238,11 +276,10 @@ export default function HomePage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              {/* Floating quote card */}
-              <div className="absolute -bottom-6 -left-6 bg-white border border-slate-200 p-6 rounded-2xl shadow-2xl max-w-[220px]">
-                <BarChart3 className="w-7 h-7 text-[#52B788] mb-3" />
-                <p className="font-semibold text-sm leading-snug italic" style={{ fontFamily: 'Georgia, serif' }}>
-                  "Empowering local communities with scientific tools."
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-3xl border border-stone-200 shadow-soft p-6 max-w-[240px]">
+                <BarChart3 className="w-7 h-7 text-brand-500 mb-3" />
+                <p className="font-display text-base text-stone-900 leading-snug italic">
+                  “Empowering local communities with scientific tools.”
                 </p>
               </div>
             </FadeUp>
@@ -251,42 +288,39 @@ export default function HomePage() {
       </section>
 
       {/* ── PRIORITY AREAS ───────────────────────────────────────────────── */}
-      <section className="relative py-24 bg-slate-50 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+      <section className="relative py-24 bg-stone-100 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
           <FadeUp className="text-center max-w-2xl mx-auto mb-16">
-            <Overline>Our Focus</Overline>
-            <h2 className="text-4xl md:text-5xl font-bold mb-5" style={{ fontFamily: 'Georgia, serif' }}>
-              Priority Restoration Areas
-            </h2>
-            <p className="text-lg text-slate-500">
-              We target the most critical ecosystems where restoration has the highest impact on
-              climate and communities.
-            </p>
+            <SectionHeading
+              eyebrow="Our Focus"
+              title="Priority restoration areas"
+              subtitle="We target ecosystems where restoration delivers the greatest climate, biodiversity, and community value."
+            />
           </FadeUp>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {priorityAreas.map((area, i) => (
               <FadeUp key={i} delay={i * 120}>
-                <div className="h-full group hover:shadow-2xl transition-all duration-500 bg-white overflow-hidden rounded-3xl border border-slate-100">
-                  <div className="relative h-60 overflow-hidden">
+                <div className="group h-full overflow-hidden rounded-[32px] border border-stone-200 bg-white shadow-soft transition-shadow duration-300 hover:shadow-card">
+                  <div className="relative h-64 overflow-hidden">
                     <img
                       src={area.image}
                       alt={area.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                    <div className="absolute top-4 left-4 p-3 bg-white/90 backdrop-blur-sm rounded-2xl text-[#52B788] shadow-sm">
+                    <div className="absolute top-4 left-4 p-3 rounded-2xl bg-white/90 backdrop-blur-sm text-brand-600 shadow-sm">
                       {area.icon}
                     </div>
                   </div>
-                  <div className="p-4 md:p-6">
-                    <h3 className="text-lg md:text-2xl font-bold mb-3 group-hover:text-[#52B788] transition-colors duration-200">
+                  <div className="p-6">
+                    <h3 className="text-2xl font-display font-semibold mb-3 text-stone-900 transition-colors duration-200 group-hover:text-brand-600">
                       {area.title}
                     </h3>
-                    <p className="text-slate-500 leading-relaxed text-sm mb-5">{area.description}</p>
+                    <p className="text-sm leading-relaxed text-stone-500 mb-6">{area.description}</p>
                     <button
                       onClick={() => nav('work')}
-                      className="inline-flex items-center gap-1.5 text-[#52B788] font-semibold text-sm hover:gap-2.5 transition-all"
+                      className="inline-flex items-center gap-2 text-brand-600 font-semibold text-sm hover:gap-2.5 transition-all duration-200"
                     >
                       Learn more <ArrowRight className="w-4 h-4" />
                     </button>
@@ -299,57 +333,48 @@ export default function HomePage() {
       </section>
 
       {/* ── PARTNERS STRIP ───────────────────────────────────────────────── */}
-      <section className="relative py-8 md:py-16 border-y border-slate-200 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-          <p className="text-center text-xs font-bold uppercase tracking-[0.25em] text-slate-400 mb-8">
-            Trusted Partnerships & Affiliations
+      <section className="relative py-14 bg-stone-100 border-t border-b border-stone-200">
+        <div className="max-w-6xl mx-auto px-6 md:px-10 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-stone-500 mb-10 font-body">
+            In collaboration with
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
+          <div className="flex flex-wrap justify-center items-center gap-10">
             {partners.map((name) => (
-              <div
+              <span
                 key={name}
-                className="text-sm font-semibold text-slate-300 hover:text-slate-500 transition-colors cursor-default"
+                className="font-display text-xl font-semibold text-stone-500 hover:text-stone-700 transition-colors duration-200"
               >
                 {name}
-              </div>
+              </span>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── IMPACT CTA ───────────────────────────────────────────────────── */}
-      <section className="relative py-8 md:py-16 overflow-hidden">
+      <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/image_5.jpg"
-            alt="African community"
-            className="w-full h-full object-cover"
+            src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1920&q=85"
+            alt="Aerial view of African forest canopy — dense green treetops seen from above"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-[#2D6A4F]/88" />
-          {/* Hatching texture overlay */}
-          <div
-            className="absolute inset-0 opacity-[0.08]"
-            style={{
-              backgroundImage: 'repeating-linear-gradient(45deg,#fff 0px,#fff 1px,transparent 1px,transparent 8px)',
-            }}
-          />
+          <div className="absolute inset-0 bg-stone-950/65" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
           <FadeUp className="max-w-3xl mx-auto text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/55 mb-4">Join the Movement</p>
-            <h2
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
-              style={{ fontFamily: 'Georgia, serif' }}
-            >
-              Ready to Restore Africa, Together?
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-earth-100 mb-4 font-body">
+              Join the movement
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              Ready to restore Africa, together?
             </h2>
             <p className="text-lg text-white/80 mb-10 leading-relaxed">
-              Whether you're a researcher, community leader, or organization — there's a place for
-              you in ICRA's mission.
+              Whether you're a researcher, community leader, or organization — your partnership unlocks restoration at scale.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <PrimaryBtn white onClick={() => nav('contact')}>
+              <PrimaryBtn onClick={() => nav('partner')}>
                 Partner with ICRA
               </PrimaryBtn>
               <PrimaryBtn outline onClick={() => nav('about')}>

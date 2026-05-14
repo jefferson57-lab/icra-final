@@ -16,6 +16,9 @@ module.exports = {
         lg:   'var(--radius-lg)',
         xl:   'var(--radius-xl)',
         full: 'var(--radius-full)',
+        '2xl': '1rem',
+        '3xl': '1.5rem',
+        '4xl': '2rem',
         DEFAULT: 'var(--radius-md)',
       },
 
@@ -27,6 +30,8 @@ module.exports = {
         lg:      'var(--shadow-lg)',
         xl:      'var(--shadow-xl)',
         card:    'var(--shadow-card)',
+        soft:    '0 2px 20px 0 rgba(30, 27, 22, 0.06)',
+        lifted:  '0 8px 48px 0 rgba(30, 27, 22, 0.12)',
       },
 
       // ── Font families — resolve to per-theme CSS vars ─────────────────────
@@ -35,6 +40,8 @@ module.exports = {
         heading: 'var(--font-heading)',
         mono:    'var(--font-mono)',
         serif:   ['Georgia', 'serif'],
+        display: 'var(--font-display)',
+        body:    'var(--font-body)',
       },
 
       // ── Font sizes ─────────────────────────────────────────────────────────
@@ -98,6 +105,43 @@ module.exports = {
           '3': 'hsl(var(--chart-3))',
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
+        },
+        /* === NEW DESIGN TOKENS — Brand, Earth, Stone === */
+        brand: {
+          50:  'var(--brand-50)',
+          100: 'var(--brand-100)',
+          200: 'var(--brand-200)',
+          300: 'var(--brand-300)',
+          400: 'var(--brand-400)',
+          500: 'var(--brand-500)',
+          600: 'var(--brand-600)',
+          700: 'var(--brand-700)',
+          800: 'var(--brand-800)',
+          900: 'var(--brand-900)',
+        },
+        earth: {
+          50:  'var(--earth-50)',
+          100: 'var(--earth-100)',
+          200: 'var(--earth-200)',
+          300: 'var(--earth-300)',
+          400: 'var(--earth-400)',
+          500: 'var(--earth-500)',
+          600: 'var(--earth-600)',
+          700: 'var(--earth-700)',
+          800: 'var(--earth-800)',
+          900: 'var(--earth-900)',
+        },
+        stone: {
+          50:  'var(--stone-50)',
+          100: 'var(--stone-100)',
+          200: 'var(--stone-200)',
+          300: 'var(--stone-300)',
+          400: 'var(--stone-400)',
+          500: 'var(--stone-500)',
+          600: 'var(--stone-600)',
+          700: 'var(--stone-700)',
+          800: 'var(--stone-800)',
+          900: 'var(--stone-900)',
         },
       },
 

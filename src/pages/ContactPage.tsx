@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Container, Card, CardContent, Badge, Button, Input, Textarea } from '@blinkdotnew/ui'
 import { Mail, Phone, MapPin, Globe, Send, Handshake, Briefcase } from 'lucide-react'
+import { SectionHeading } from '../components/ui/SectionHeading'
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -37,17 +38,17 @@ export default function ContactPage() {
     <div className="flex flex-col">
 
       {/* ── Hero ── */}
-      <section className="relative py-28 md:py-36 overflow-hidden">
+      <section className="relative py-20 sm:py-24 md:py-28 overflow-hidden bg-stone-950">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&q=85&w=1920"
             alt="Partnership and collaboration"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/70 to-slate-950/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-brand-900/90" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-950/60 via-transparent to-transparent" />
         </div>
-        <div className="w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
           <motion.div
             className="max-w-3xl"
             initial="initial"
@@ -55,19 +56,19 @@ export default function ContactPage() {
             variants={stagger}
           >
             <motion.div variants={fadeUp}>
-              <Badge className="mb-5 py-1.5 px-4 text-sm font-semibold border border-primary/40 bg-primary/15 text-primary backdrop-blur-sm">
+              <Badge className="mb-5 py-1.5 px-4 text-sm font-semibold border border-earth-300/50 bg-earth-300/12 text-earth-300 backdrop-blur-sm">
                 Contact & Partner
               </Badge>
             </motion.div>
             <motion.h1
               variants={fadeUp}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6"
+              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight mb-6"
             >
-              Partner with ICRA for Lasting Impact
+              Partner with ICRA for lasting impact
             </motion.h1>
             <motion.p
               variants={fadeUp}
-              className="text-lg md:text-xl text-white/75 leading-relaxed max-w-2xl"
+              className="text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl"
             >
               Connect with us to explore partnership opportunities, research collaborations, or community programs that drive real change across Africa.
             </motion.p>
@@ -76,16 +77,17 @@ export default function ContactPage() {
       </section>
 
       {/* ── Main Contact Section ── */}
-      <section className="relative py-24 overflow-hidden bg-background">
+      <section className="relative py-24 overflow-hidden bg-stone-50">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&q=60&w=1920"
             alt=""
-            className="w-full h-full object-cover opacity-[0.04]"
+            className="w-full h-full object-cover opacity-[0.08]"
           />
+          <div className="absolute inset-0 bg-stone-50/96" />
         </div>
         <Container className="relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
 
             {/* Contact Form */}
             <motion.div
@@ -94,9 +96,13 @@ export default function ContactPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <Card className="p-8 md:p-10 rounded-3xl shadow-xl border bg-card">
+              <Card className="p-8 md:p-10 rounded-[32px] shadow-soft border border-stone-200 bg-white">
                 <CardContent className="p-0">
-                  <h2 className="text-2xl font-bold mb-8 font-serif">Send Us a Message</h2>
+                  <SectionHeading
+                    eyebrow="Get in touch"
+                    title="Let’s partner for Africa’s climate restoration"
+                    subtitle="Fill out the form below or contact our partnership team directly. We’ll respond within 48 hours."
+                  />
                   <form className="space-y-5">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div className="space-y-2">
@@ -149,16 +155,16 @@ export default function ContactPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-2xl font-bold mb-6 font-serif">Partnership Tracks</h2>
+                <h2 className="font-display text-2xl font-bold mb-6 text-stone-900">Partnership Tracks</h2>
                 <div className="flex flex-col gap-4">
                   {partnershipTracks.map((track, i) => (
-                    <div key={i} className="flex gap-5 p-5 rounded-2xl bg-primary/5 border border-primary/10 hover:bg-primary/10 transition-colors">
-                      <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-background shadow-sm border border-border flex items-center justify-center">
+                    <div key={i} className="flex gap-5 p-5 rounded-3xl bg-brand-50 border border-brand-100 hover:bg-brand-100 transition-colors duration-200">
+                      <div className="flex-shrink-0 w-11 h-11 rounded-2xl bg-white shadow-sm border border-stone-200 flex items-center justify-center">
                         {track.icon}
                       </div>
                       <div>
-                        <h3 className="font-bold mb-1">{track.title}</h3>
-                        <p className="text-sm text-muted-foreground">{track.description}</p>
+                        <h3 className="font-display font-semibold mb-1 text-stone-900">{track.title}</h3>
+                        <p className="text-sm text-stone-600">{track.description}</p>
                       </div>
                     </div>
                   ))}

@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
+
+:root {
+  /* === FONT FAMILIES === */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+
+  /* === TYPE SCALE === */
+  --text-xs:   0.75rem;   /* 12px */
+  --text-sm:   0.875rem;  /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg:   1.125rem;  /* 18px */
+  --text-xl:   1.375rem;  /* 22px */
+  --text-2xl:  1.75rem;   /* 28px */
+  --text-3xl:  2.25rem;   /* 36px */
+  --text-4xl:  3rem;      /* 48px */
+  --text-5xl:  4rem;      /* 64px */
+  --text-6xl:  5.5rem;    /* 88px */
+
+  /* === LINE HEIGHTS === */
+  --leading-tight:   1.08;
+  --leading-snug:    1.25;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.75;
+
+  /* === LETTER SPACING === */
+  --tracking-tight:   -0.025em;
+  --tracking-normal:   0;
+  --tracking-wide:     0.06em;
+  --tracking-widest:   0.12em;
+
+  /* === PRIMARY BRAND — Deep Forest Green === */
+  --brand-50:  #f0f7f2;
+  --brand-100: #d6ead9;
+  --brand-200: #a8d4ae;
+  --brand-300: #72b87a;
+  --brand-400: #4a9d55;
+  --brand-500: #2d7d3a;
+  --brand-600: #226130;
+  --brand-700: #1a4d26;
+  --brand-800: #12381b;
+  --brand-900: #0a2511;
+
+  /* === EARTH WARM — Ochre / Sienna === */
+  --earth-50:  #fdf6ee;
+  --earth-100: #f8e4c4;
+  --earth-200: #f0c98a;
+  --earth-300: #e4a84a;
+  --earth-400: #d08a28;
+  --earth-500: #b36c18;
+  --earth-600: #8f5212;
+  --earth-700: #6b3b0d;
+  --earth-800: #472608;
+  --earth-900: #2a1604;
+
+  /* === NEUTRAL — Warm Stone === */
+  --stone-50:  #faf9f7;
+  --stone-100: #f2efe9;
+  --stone-200: #e4dfd5;
+  --stone-300: #cdc6b8;
+  --stone-400: #ada493;
+  --stone-500: #8c8375;
+  --stone-600: #6e6559;
+  --stone-700: #534d43;
+  --stone-800: #38342c;
+  --stone-900: #1e1b16;
+
+  /* === SEMANTIC === */
+  --color-background:    var(--stone-50);
+  --color-surface:       #ffffff;
+  --color-surface-alt:   var(--stone-100);
+  --color-border:        var(--stone-200);
+  --color-border-strong: var(--stone-300);
+
+  --color-text-primary:   var(--stone-900);
+  --color-text-secondary: var(--stone-600);
+  --color-text-muted:     var(--stone-400);
+  --color-text-inverse:   #ffffff;
+
+  --color-primary:        var(--brand-500);
+  --color-primary-hover:  var(--brand-600);
+  --color-primary-light:  var(--brand-50);
+  --color-accent:         var(--earth-400);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--stone-900);
+    --color-surface: var(--stone-800);
+    --color-surface-alt: var(--stone-700);
+    --color-border: var(--stone-700);
+    --color-border-strong: var(--stone-600);
+
+    --color-text-primary: var(--stone-50);
+    --color-text-secondary: var(--stone-300);
+    --color-text-muted: var(--stone-500);
+  }
+}
