@@ -3,7 +3,7 @@ import { ArrowRight, Leaf, Droplets, Sprout, BarChart3, TreePine, Users2, Globe,
 import { useNavigate } from '@tanstack/react-router'
 import { SectionHeading } from '../components/ui/SectionHeading'
 
-// ── Animation hook (replaces framer-motion) ──────────────────────────────────
+// ── Animation hook ────────────────────────────────────────────────────────────
 function useFadeIn(delay = 0) {
   const [visible, setVisible] = useState(false)
   useEffect(() => {
@@ -27,7 +27,6 @@ function useInView(ref) {
   return inView
 }
 
-// Wrapper div that fades up when it enters the viewport
 function FadeUp({ children, delay = 0, className = '' }) {
   const ref = React.useRef(null)
   const inView = useInView(ref)
@@ -46,7 +45,7 @@ function FadeUp({ children, delay = 0, className = '' }) {
   )
 }
 
-// ── Data ─────────────────────────────────────────────────────────────────────
+// ── Data ──────────────────────────────────────────────────────────────────────
 const priorityAreas = [
   {
     title: 'Sustainable Agriculture',
@@ -69,17 +68,17 @@ const priorityAreas = [
 ]
 
 const stats = [
-  { value: '2.5M+', label: 'Trees Planted',       icon: <TreePine className="w-4 h-4" /> },
-  { value: '20+',    label: 'Climate Experts',    icon: <Leaf     className="w-4 h-4" /> },
-  { value: '1500+',  label: 'Community Members',    icon: <Users2   className="w-4 h-4" /> },
-  { value: '10yr+', label: 'Restoration Impact',   icon: <BarChart3 className="w-4 h-4" /> },
+  { value: '2.5M+', label: 'Trees Planted',      icon: <TreePine  className="w-4 h-4" /> },
+  { value: '20+',   label: 'Climate Experts',     icon: <Leaf      className="w-4 h-4" /> },
+  { value: '1500+', label: 'Community Members',   icon: <Users2    className="w-4 h-4" /> },
+  { value: '10yr+', label: 'Restoration Impact',  icon: <BarChart3 className="w-4 h-4" /> },
 ]
 
 const impactStats = [
-  { value: '18', label: 'Countries active', icon: Globe },
-  { value: '50K+', label: 'Hectares restored', icon: Leaf },
-  { value: '120K+', label: 'Lives impacted', icon: Users2 },
-  { value: '94%', label: 'Project success rate', icon: Award },
+  { value: '18',    label: 'Countries active',    icon: Globe  },
+  { value: '50K+',  label: 'Hectares restored',   icon: Leaf   },
+  { value: '120K+', label: 'Lives impacted',       icon: Users2 },
+  { value: '94%',   label: 'Project success rate', icon: Award  },
 ]
 
 const partners = [
@@ -90,7 +89,7 @@ const partners = [
   'Pan-African Climate Hub',
 ]
 
-// ── Reusable primitives ───────────────────────────────────────────────────────
+// ── Reusable button ───────────────────────────────────────────────────────────
 const PrimaryBtn = ({ children, onClick, white = false, outline = false }) => (
   <button
     onClick={onClick}
@@ -108,18 +107,18 @@ const PrimaryBtn = ({ children, onClick, white = false, outline = false }) => (
 
 // ── Main component ────────────────────────────────────────────────────────────
 export default function HomePage() {
-  // hero fade-in
-  const h1 = useFadeIn(100)
-  const h2 = useFadeIn(250)
-  const h3 = useFadeIn(400)
-  const h4 = useFadeIn(600)
-  const h5 = useFadeIn(800)
+  const h1 = useFadeIn(80)
+  const h2 = useFadeIn(220)
+  const h3 = useFadeIn(380)
+  const h4 = useFadeIn(540)
+  const h5 = useFadeIn(700)
+  const h6 = useFadeIn(900)
 
   const navigate = useNavigate()
 
   const nav = (page) => {
-    if (page === 'work') navigate({ to: '/restoration' })
-    else if (page === 'about') navigate({ to: '/about' })
+    if (page === 'work')    navigate({ to: '/restoration' })
+    else if (page === 'about')   navigate({ to: '/about' })
     else if (page === 'contact') navigate({ to: '/partner' })
     else if (page === 'partner') navigate({ to: '/partner' })
   }
@@ -129,16 +128,18 @@ export default function HomePage() {
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative min-h-[95vh] flex items-center overflow-hidden">
+
+        {/* Background photo */}
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.pexels.com/photos/16973544/pexels-photo-16973544.jpeg"
-            alt="Sweeping African savannah landscape at golden hour — vast open grassland under warm sky"
+            alt="Sweeping African savannah at golden hour"
             loading="eager"
             decoding="async"
             fetchPriority="high"
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-stone-900/75 via-stone-900/40 to-stone-900/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-stone-900/80 via-stone-900/45 to-stone-900/10" />
           <div
             className="absolute inset-0"
             style={{
@@ -150,38 +151,113 @@ export default function HomePage() {
           />
         </div>
 
+        {/* Hero content */}
         <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 py-24 w-full pt-32">
           <div className="max-w-3xl">
+
+            {/* ── INSTITUTE NAME — the most important identity element ── */}
+            {/*
+              Placement rationale:
+                • Sits ABOVE the headline as an authoritative identity stamp
+                • Two-line treatment: acronym "ICRA" large + full name beneath
+                  in letterspaced small caps — the classic editorial masthead pattern
+                • Cormorant Garamond (display serif) gives it institutional weight
+                  without feeling corporate; it reads like a journal or foundation
+                • The full name is set at a comfortable reading size with generous
+                  letter-spacing — wide tracking on all-caps text is a proven
+                  typographic technique that communicates authority and permanence
+                • Separated from the headline below by a thin earth-ochre rule —
+                  a clear compositional break that anchors the brand before the
+                  storytelling begins
+            */}
             <div
-              style={{ opacity: h1 ? 1 : 0, transform: h1 ? 'translateY(0)' : 'translateY(20px)', transition: 'all .6s ease' }}
-              className="mb-8 flex items-center gap-3"
+              style={{
+                opacity: h1 ? 1 : 0,
+                transform: h1 ? 'translateY(0)' : 'translateY(16px)',
+                transition: 'all 0.55s cubic-bezier(0.22,1,0.36,1)',
+              }}
+              className="mb-8"
             >
-              <div className="h-px w-10 bg-earth-400" />
-              <span className="text-xs uppercase tracking-[0.28em] text-orange-500 font-semibold font-body">
-                Pan-African climate restoration
-              </span>
+              {/* Acronym — large, bold, display serif */}
+              <div className="flex items-baseline gap-4 mb-2">
+                <span
+                  className="font-display font-bold text-white leading-none"
+                  style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', letterSpacing: '-0.02em' }}
+                >
+                  ICRA
+                </span>
+                {/* Thin vertical divider — editorial detail */}
+                <span className="w-px self-stretch bg-white/25 mx-1" />
+                {/* Est. year — small contextual label beside the acronym */}
+                <span
+                  className="font-body text-white/45 font-medium"
+                  style={{ fontSize: '0.7rem', letterSpacing: '0.18em', textTransform: 'uppercase' }}
+                >
+                  Est. 2021
+                </span>
+              </div>
+
+              {/* Full institute name — letterspaced small caps treatment */}
+              <p
+                className="font-display text-orange-500 font-semibold"
+                style={{
+                  fontSize: 'clamp(0.85rem, 1.8vw, 1.1rem)',
+                  letterSpacing: '0.22em',
+                  textTransform: 'uppercase',
+                  lineHeight: 1.5,
+                }}
+              >
+                Institute of Climate Restoration for Africa
+              </p>
+
+              {/* Earth-ochre rule — separates identity from narrative */}
+              <div className="flex items-center gap-3 mt-5">
+                <div className="h-px w-12 bg-orange-500" />
+                <span
+                  className="font-body text-orange-500 font-semibold"
+                  style={{ fontSize: '0.65rem', letterSpacing: '0.22em', textTransform: 'uppercase' }}
+                >
+                  Pan-African climate restoration
+                </span>
+              </div>
             </div>
 
+            {/* ── MAIN HEADLINE ── */}
             <div
-              style={{ opacity: h2 ? 1 : 0, transform: h2 ? 'translateY(0)' : 'translateY(24px)', transition: 'all .65s ease' }}
+              style={{
+                opacity: h2 ? 1 : 0,
+                transform: h2 ? 'translateY(0)' : 'translateY(24px)',
+                transition: 'all 0.65s cubic-bezier(0.22,1,0.36,1)',
+              }}
               className="mb-8"
             >
               <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight tracking-tight text-white">
-                Restoring <span className="text-orange-500">Africa’s</span> climate,<br />one community at a time
+                Restoring <span className="text-orange-500">Africa's</span> climate,<br />
+                one community at a time
               </h1>
             </div>
 
+            {/* ── SUBHEADLINE ── */}
             <div
-              style={{ opacity: h3 ? 1 : 0, transform: h3 ? 'translateY(0)' : 'translateY(24px)', transition: 'all .65s ease' }}
-              className="max-w-2xl"
+              style={{
+                opacity: h3 ? 1 : 0,
+                transform: h3 ? 'translateY(0)' : 'translateY(24px)',
+                transition: 'all 0.65s cubic-bezier(0.22,1,0.36,1)',
+              }}
+              className="max-w-2xl mb-10"
             >
-              <p className="text-base sm:text-lg md:text-xl text-white/80 leading-relaxed mb-10">
+              <p className="text-base sm:text-lg md:text-xl text-white/75 leading-relaxed">
                 ICRA deploys science, citizen action, and strategic capital to restore degraded African ecosystems at scale. Your partnership directly funds measurable, lasting change across 18 countries.
               </p>
             </div>
 
+            {/* ── CTA BUTTONS ── */}
             <div
-              style={{ opacity: h4 ? 1 : 0, transform: h4 ? 'translateY(0)' : 'translateY(20px)', transition: 'all .6s ease' }}
+              style={{
+                opacity: h4 ? 1 : 0,
+                transform: h4 ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'all 0.6s cubic-bezier(0.22,1,0.36,1)',
+              }}
               className="flex flex-col sm:flex-row gap-4"
             >
               <button
@@ -192,8 +268,7 @@ export default function HomePage() {
               </button>
               <button
                 onClick={() => {
-                  const elem = document.getElementById('impact')
-                  elem?.scrollIntoView({ behavior: 'smooth' })
+                  document.getElementById('impact')?.scrollIntoView({ behavior: 'smooth' })
                 }}
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border border-white/25 text-white text-base font-semibold hover:bg-white/10 transition-all duration-200 backdrop-blur-sm"
               >
@@ -203,21 +278,26 @@ export default function HomePage() {
           </div>
         </div>
 
+        {/* ── FLOATING STAT CARD (bottom-right) ── */}
         <div
-          style={{ opacity: h5 ? 1 : 0, transform: h5 ? 'translateY(0)' : 'translateY(20px)', transition: 'all .6s ease' }}
+          style={{
+            opacity: h6 ? 1 : 0,
+            transform: h6 ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'all 0.6s cubic-bezier(0.22,1,0.36,1)',
+          }}
           className="absolute bottom-10 right-6 lg:right-16 hidden lg:grid grid-cols-2 gap-px bg-white/10 border border-white/15 backdrop-blur-xl rounded-3xl overflow-hidden shadow-soft"
         >
           {stats.map((s) => (
             <div key={s.label} className="px-7 py-4 bg-stone-950/75 hover:bg-stone-950/90 transition-colors">
-              <div className="flex items-center gap-1.5 mb-1 text-earth-300/80">{s.icon}</div>
+              <div className="flex items-center gap-1.5 mb-1 text-orange-400/80">{s.icon}</div>
               <div className="text-2xl font-extrabold text-white">{s.value}</div>
-              <div className="text-[10px] font-semibold text-white uppercase tracking-wider mt-0.5">{s.label}</div>
+              <div className="text-[10px] font-semibold text-white/60 uppercase tracking-wider mt-0.5">{s.label}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── IMPACT STATS ──────────────────────────────────────────────────── */}
+      {/* ── IMPACT STATS ─────────────────────────────────────────────────── */}
       <section id="impact" className="py-20 bg-stone-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10">
           <div className="flex flex-col items-center justify-center gap-3 mb-12">
@@ -227,7 +307,6 @@ export default function HomePage() {
             </span>
             <div className="h-px w-10 bg-earth-400" />
           </div>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
             {impactStats.map((stat, i) => {
               const Icon = stat.icon
@@ -236,9 +315,7 @@ export default function HomePage() {
                   <div className="relative flex flex-col items-center text-center p-8 rounded-[28px] bg-white border border-stone-200 shadow-soft hover:shadow-card transition-shadow duration-300">
                     <div className="absolute top-0 right-0 w-16 h-16 bg-brand-50 rounded-bl-[28px] opacity-80" />
                     <Icon className="w-6 h-6 text-brand-500 mb-4 relative" />
-                    <div className="font-display text-4xl font-bold text-brand-600 mb-2 relative">
-                      {stat.value}
-                    </div>
+                    <div className="font-display text-4xl font-bold text-brand-600 mb-2 relative">{stat.value}</div>
                     <div className="text-sm font-medium text-stone-500 relative">{stat.label}</div>
                   </div>
                 </FadeUp>
@@ -279,7 +356,7 @@ export default function HomePage() {
               <div className="absolute -bottom-6 -left-6 bg-white rounded-3xl border border-stone-200 shadow-soft p-6 max-w-[240px]">
                 <BarChart3 className="w-7 h-7 text-brand-500 mb-3" />
                 <p className="font-display text-base text-stone-900 leading-snug italic">
-                  “Empowering local communities with scientific tools.”
+                  "Empowering local communities with scientific tools."
                 </p>
               </div>
             </FadeUp>
@@ -297,7 +374,6 @@ export default function HomePage() {
               subtitle="We target ecosystems where restoration delivers the greatest climate, biodiversity, and community value."
             />
           </FadeUp>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {priorityAreas.map((area, i) => (
               <FadeUp key={i} delay={i * 120}>
@@ -351,17 +427,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── IMPACT CTA ───────────────────────────────────────────────────── */}
+      {/* ── CLOSING CTA ──────────────────────────────────────────────────── */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1920&q=85"
-            alt="Aerial view of African forest canopy — dense green treetops seen from above"
+            alt="Aerial view of African forest canopy"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-stone-950/65" />
         </div>
-
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
           <FadeUp className="max-w-3xl mx-auto text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-earth-100 mb-4 font-body">
@@ -371,15 +446,11 @@ export default function HomePage() {
               Ready to restore Africa, together?
             </h2>
             <p className="text-lg text-white/80 mb-10 leading-relaxed">
-              Whether you're a researcher, community leader, or organization — your partnership unlocks restoration at scale.
+              Whether you're a researcher, community leader, or organisation — your partnership unlocks restoration at scale.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <PrimaryBtn onClick={() => nav('partner')}>
-                Partner with ICRA
-              </PrimaryBtn>
-              <PrimaryBtn outline onClick={() => nav('about')}>
-                Our Approach
-              </PrimaryBtn>
+              <PrimaryBtn onClick={() => nav('partner')}>Partner with ICRA</PrimaryBtn>
+              <PrimaryBtn outline onClick={() => nav('about')}>Our Approach</PrimaryBtn>
             </div>
           </FadeUp>
         </div>
