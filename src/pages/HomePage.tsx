@@ -193,7 +193,7 @@ export default function HomePage() {
                   className="font-body text-white/45 font-medium"
                   style={{ fontSize: '0.7rem', letterSpacing: '0.18em', textTransform: 'uppercase' }}
                 >
-                  Est. 2021
+                  Est. 2024
                 </span>
               </div>
 

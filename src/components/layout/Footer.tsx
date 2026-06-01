@@ -50,7 +50,7 @@ export function Footer() {
                   ICRA
                 </p>
                 <p className="text-xs uppercase tracking-[0.28em] text-earth-300 leading-tight">
-                  Institute of Climate Restoration
+                  Institute of Climate Restoration For Africa
                 </p>
               </div>
             </Link>
@@ -83,7 +83,7 @@ export function Footer() {
                 <MapPin className="w-4 h-4 text-earth-300 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-semibold text-white">Nairobi, Kenya</p>
-                  <p className="text-stone-400">ICAD Centre — climate restoration hub</p>
+                  <p className="text-stone-400">AICAD Centre — climate restoration hub</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
