@@ -45,6 +45,7 @@ export function Navbar() {
       '/partner':     'Partner With Us | ICRA',
       '/restoration': 'Our Research | ICRA',
       '/team':        'Our Team | ICRA',
+      '/membership':  'Membership | ICRA Africa',
       '/contact':     'Partner With Us | ICRA',
     }
     const matchedPath = Object.keys(titles).find((p) =>
@@ -55,10 +56,11 @@ export function Navbar() {
 
   // ── Nav items ──────────────────────────────────────────────────────────────
   const navItems = [
-    { path: '/',            label: 'Home'     },
-    { path: '/about',       label: 'About'    },
-    { path: '/restoration', label: 'Our Work' },
-    { path: '/team',        label: 'Team'     },
+    { path: '/',            label: 'Home'       },
+    { path: '/about',       label: 'About'      },
+    { path: '/restoration', label: 'Our Work'   },
+    { path: '/team',        label: 'Team'       },
+    { path: '/membership',  label: 'Membership' },
   ]
 
   const isActive = (path: string) =>

@@ -8,6 +8,7 @@ import RestorationPage from './pages/RestorationPage'
 import ContactPage from './pages/ContactPage'
 import TeamPage from './pages/TeamPage'
 import PartnerWithUs from './pages/PartnerWithUs'
+import MembershipPage from './pages/MembershipPage'
 
 // Define routes
 const rootRoute = createRootRoute({
@@ -59,12 +60,19 @@ const partnerRoute = createRoute({
   component: PartnerWithUs,
 })
 
+const membershipRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/membership',
+  component: MembershipPage,
+})
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   aboutRoute,
   restorationRoute,
   contactRoute,
   teamRoute,
+  membershipRoute,
   partnerRoute,
 ])
 

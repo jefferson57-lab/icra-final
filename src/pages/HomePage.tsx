@@ -181,10 +181,10 @@ export default function HomePage() {
               {/* Acronym — large, bold, display serif */}
               <div className="flex items-baseline gap-4 mb-2">
                 <span
-                  className="font-display font-bold text-white leading-none"
+                  className="font-display font-bold text-orange-500 leading-none"
                   style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', letterSpacing: '-0.02em' }}
                 >
-                  ICRA
+                  Institute of Climate Restoration for Africa
                 </span>
                 {/* Thin vertical divider — editorial detail */}
                 <span className="w-px self-stretch bg-white/25 mx-1" />
@@ -193,13 +193,13 @@ export default function HomePage() {
                   className="font-body text-white/45 font-medium"
                   style={{ fontSize: '0.7rem', letterSpacing: '0.18em', textTransform: 'uppercase' }}
                 >
-                  Est. 2024
+                
                 </span>
               </div>
 
               {/* Full institute name — letterspaced small caps treatment */}
               <p
-                className="font-display text-orange-500 font-semibold"
+                className="font-display text-white font-semibold"
                 style={{
                   fontSize: 'clamp(0.85rem, 1.8vw, 1.1rem)',
                   letterSpacing: '0.22em',
@@ -207,7 +207,7 @@ export default function HomePage() {
                   lineHeight: 1.5,
                 }}
               >
-                Institute of Climate Restoration for Africa
+                I C R A
               </p>
 
               {/* Earth-ochre rule — separates identity from narrative */}

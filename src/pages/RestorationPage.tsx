@@ -351,7 +351,7 @@ export default function RestorationPage() {
       <section className="relative py-28 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&q=80&w=1920"
+            src="public/images/gradient_membership.jpg"
             alt="African forest"
             className="w-full h-full object-cover"
           />
