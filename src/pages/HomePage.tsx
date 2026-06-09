@@ -182,7 +182,7 @@ export default function HomePage() {
               <div className="flex items-baseline gap-4 mb-2">
                 <span
                   className="font-display font-bold text-orange-500 leading-none"
-                  style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', letterSpacing: '-0.02em' }}
+                  style={{ fontSize: 'clamp(4rem, 10vw, 7.5rem)', letterSpacing: '-0.03em' }}
                 >
                   Institute of Climate Restoration for Africa
                 </span>

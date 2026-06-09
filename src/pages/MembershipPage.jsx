@@ -114,7 +114,7 @@ export default function MembershipPage() {
       {/* HERO */}
       <section className="relative py-24 overflow-hidden" aria-labelledby="hero-heading">
         <div className="absolute inset-0 z-0">
-          <img src="/images/Shifty.jpg" alt="" className="w-full h-full object-cover opacity-90" />
+          <img src="images/Shifty.jpg" alt="" className="w-full h-full object-cover opacity-90" />
           <div className="absolute inset-0 bg-gradient-to-r from-stone-900/80 via-stone-900/50 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 to-transparent" />
         </div>
@@ -184,7 +184,7 @@ export default function MembershipPage() {
               </ol>
 
               <div className="hidden lg:block mt-8 rounded-3xl overflow-hidden h-52">
-                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb773b09?auto=format&fit=crop&q=70&w=800" alt="" className="w-full h-full object-cover" />
+                <img src="/images/testa.jpg" alt="" className="w-full h-full object-cover" />
               </div>
             </div>
 
@@ -294,7 +294,7 @@ export default function MembershipPage() {
       {/* CTA BANNER */}
       <section className="relative py-16 overflow-hidden" aria-labelledby="cta-heading">
         <div className="absolute inset-0 z-0">
-          <img src="public/images/gradient_membership.jpg" alt="" className="w-full h-full object-cover opacity-100" />
+          <img src="images/gradient_membership.jpg" alt="" className="w-full h-full object-cover opacity-100" />
           <div className="absolute inset-0 bg-primary/85" />
           <div className="absolute inset-0" style={{ backgroundImage: 'repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 8px)' }} />
         </div>

@@ -49,14 +49,14 @@ const teamMembers = [
   //   bio: 'Mr. Jones Mutebi bridges the gap between ground-level research and high-level policy, working directly with African governments to embed restoration science into national climate frameworks and pan-continental governance structures.',
   //   expertise: ['Climate Policy', 'Government Relations', 'Pan-African Governance', 'Advocacy'],
   // },
-  // {
-  //   image: 'images/joy-ashioya.jpg',
-  //   name: 'Joy Ashioya',
-  //   role: 'Water Security Lead',
-  //   tag: 'Research',
-  //   bio: 'Joy is a specialist in watershed management and blue carbon ecosystems. She drives ICRA\'s water security portfolio across 10 African countries, developing frameworks that link ecosystem health with community water access and food production.',
-  //   expertise: ['Watershed Management', 'Blue Carbon', 'Food Security', 'North & East Africa'],
-  // },
+  {
+    image: 'images/joy-ashioya.jpg',
+    name: 'Joy Ashioya',
+    role: 'Water Security Lead',
+    tag: 'Research',
+    bio: 'Joy is a specialist in watershed management and blue carbon ecosystems. She drives ICRA\'s water security portfolio across 10 African countries, developing frameworks that link ecosystem health with community water access and food production.',
+    expertise: ['Watershed Management', 'Blue Carbon', 'Food Security', 'North & East Africa'],
+  },
   {
     image: 'images/william-tolbert.jpg',
     name: 'William Tolbert',
