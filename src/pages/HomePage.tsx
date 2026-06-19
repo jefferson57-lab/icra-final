@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ArrowRight, Leaf, Droplets, Sprout, BarChart3, TreePine, Users2, Globe, Award } from 'lucide-react'
+import { ArrowRight, Leaf, Droplets, Sprout, BarChart3, TreePine, Users2, Globe, Award, Calendar } from 'lucide-react'
 import { useNavigate } from '@tanstack/react-router'
 import { SectionHeading } from '../components/ui/SectionHeading'
 
@@ -69,16 +69,16 @@ const priorityAreas = [
 
 const stats = [
   { value: '2.5M+', label: 'Trees Planted',      icon: <TreePine  className="w-4 h-4" /> },
-  { value: '20+',   label: 'Climate Experts',     icon: <Leaf      className="w-4 h-4" /> },
+  { value: '10+',   label: 'Climate Experts',     icon: <Leaf      className="w-4 h-4" /> },
   { value: '1500+', label: 'Community Members',   icon: <Users2    className="w-4 h-4" /> },
   { value: '10yr+', label: 'Restoration Impact',  icon: <BarChart3 className="w-4 h-4" /> },
 ]
 
 const impactStats = [
-  { value: '18',    label: 'Countries active',    icon: Globe  },
+  { value: '10+',    label: 'Partner Organizations',    icon: Globe  },
   { value: '50K+',  label: 'Hectares restored',   icon: Leaf   },
-  { value: '120K+', label: 'Lives impacted',       icon: Users2 },
-  { value: '94%',   label: 'Project success rate', icon: Award  },
+  { value: '2024', label: 'FOUNDED',       icon: Calendar },
+  { value: '100%',   label: 'Locally-Led', icon: Award  },
 ]
 
 const partners = [
