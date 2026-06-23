@@ -52,9 +52,9 @@ const teamMembers = [
   {
     image: 'images/joy-ashioya.jpg',
     name: 'Joy Ashioya',
-    role: 'Water Security Lead',
+    role: 'Co-Founder & Water Security Lead',
     tag: 'Research',
-    bio: 'Joy is a specialist in watershed management and blue carbon ecosystems. She drives ICRA\'s water security portfolio across 10 African countries, developing frameworks that link ecosystem health with community water access and food production.',
+    bio: 'Joy is a specialist in watershed management and communication. She drives ICRA\'s water security portfolio across 10 African countries, developing frameworks that link ecosystem health with community water access and food production.',
     expertise: ['Watershed Management', 'Blue Carbon', 'Food Security', 'North & East Africa'],
   },
   {
@@ -147,17 +147,33 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* MODAL */}
+      {/* MODAL — z-index raised above the fixed Navbar (z-50) so the
+          panel and its image render on top of the header instead of
+          being cut off underneath it. */}
       <AnimatePresence>
         {active && (
           <>
             <motion.div
-              className="fixed inset-0 bg-black/70"
+              className="fixed inset-0 z-[60] bg-black/70"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
               onClick={() => setSelected(null)}
             />
 
-            <motion.div className="fixed right-0 top-0 h-full w-full max-w-md bg-white">
-              <button onClick={() => setSelected(null)} className="absolute top-4 right-4">
+            <motion.div
+              className="fixed right-0 top-0 z-[70] h-full w-full max-w-md bg-white overflow-y-auto"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', stiffness: 320, damping: 32 }}
+            >
+              <button
+                onClick={() => setSelected(null)}
+                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/80 hover:bg-white transition-colors"
+                aria-label="Close"
+              >
                 <X />
               </button>
 

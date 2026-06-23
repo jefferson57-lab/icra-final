@@ -80,9 +80,9 @@ const teamMembers = [
   {
     image: 'images/joy-ashioya.jpg',
     name: 'Joy Ashioya',
-    role: 'Water Security Lead',
+    role: 'Co-Founder & Water Security Lead',
     tag: 'Research',
-    bio: 'Joy is a specialist in watershed management and blue carbon ecosystems. She drives ICRA\'s water security portfolio across 10 African countries, developing frameworks that link ecosystem health with community water access and food production.',
+    bio: 'Joy is a specialist in watershed management and communication. She drives ICRA\'s water security portfolio across 10 African countries, developing frameworks that link ecosystem health with community water access and food production.',
     expertise: ['Watershed Management', 'Blue Carbon', 'Food Security', 'North & East Africa'],
   },
   {
